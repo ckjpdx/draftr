@@ -2,13 +2,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { CoreModule } from './core/core.module';
 
 
 import { AppComponent } from './app.component';
-import { LoginComponent } from './login/login.component';
-import { ProfileComponent } from './profile/profile.component';
-import { AllProjectsComponent } from './all-projects/all-projects.component';
-import { ProjectDetailComponent } from './project-detail/project-detail.component';
 
 var firebaseConfig = {
   apiKey: "AIzaSyAxMjMn9totpu8iUM55JPOzKnAq7xXGYks",
@@ -20,16 +17,13 @@ var firebaseConfig = {
 }
 @NgModule({
   declarations: [
-    AppComponent,
-    LoginComponent,
-    ProfileComponent,
-    AllProjectsComponent,
-    ProjectDetailComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
     AngularFireModule.initializeApp(firebaseConfig),
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    CoreModule
   ],
   providers: [],
   bootstrap: [AppComponent]
