@@ -6,6 +6,7 @@ import { CoreModule } from './core/core.module';
 
 
 import { AppComponent } from './app.component';
+import { NewProjectComponent } from './new-project/new-project.component';
 
 var firebaseConfig = {
   apiKey: "AIzaSyAxMjMn9totpu8iUM55JPOzKnAq7xXGYks",
@@ -17,7 +18,8 @@ var firebaseConfig = {
 }
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    NewProjectComponent
   ],
   imports: [
     BrowserModule,
