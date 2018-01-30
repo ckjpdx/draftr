@@ -25,6 +25,7 @@
     "@angular/router": "^5.2.0",
     "angular-font-awesome": "^3.1.2",
     "angularfire2": "^5.0.0-rc.6",
+    "bootstrap": "^4.0.0",
     "core-js": "^2.4.1",
     "firebase": "^4.9.0",
     "firebase-tools": "^3.17.4",

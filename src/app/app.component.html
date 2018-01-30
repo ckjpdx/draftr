@@ -1,1 +1,19 @@
-<router-outlet></router-outlet>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" routerLink="posts" routerLinkActive="active">D.R.A.F.T.R</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="profile" routerLinkActive="active">My Profile</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="projects" routerLinkActive="active">All Projects</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<div class="page-wrap">
+  <router-outlet></router-outlet>
+</div>
