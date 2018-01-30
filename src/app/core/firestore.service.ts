@@ -17,7 +17,7 @@ export class FirestoreService {
   authorId: string;
 
   projectDoc: AngularFirestoreDocument < Project >
-    singleProject: Observable < Project >;
+  singleProject: Observable < Project >;
 
   constructor(private afs: AngularFirestore, private auth: AuthService) {
     this.projectsCollection = this.afs.collection('projects');
@@ -52,6 +52,7 @@ export class FirestoreService {
   addProject(project) {
     this.afs.collection('projects').add(project);
   }
+
   getProject(id){
     alert('i am also this!');
     this.projectDoc = this.afs.doc('projects/' + id);
