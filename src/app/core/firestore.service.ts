@@ -39,7 +39,7 @@ export class FirestoreService {
       }
   }
 
-  getProject(requestedUserProjects ? ){
+  getProjects(requestedUserProjects ? ){
     if (requestedUserProjects){
       this.auth.user.subscribe(author => {
         let uid = author.uid;
