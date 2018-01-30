@@ -61,10 +61,10 @@ export class AuthService {
       email: user.email,
       displayName: user.displayName ? user.displayName : user.email,
       photoURL: user.photoURL,
-      currentProject: user.currentProject,
-      projects: user.projects,
-      ideas: user.ideas,
-      isTeacher: user.isTeacher
+      currentProject: user.currentProject ? user.currentProject : "",
+      projects: user.projects ? user.projects : [],
+      ideas: user.ideas ? user.ideas : [],
+      isTeacher: user.isTeacher ? user.isTeacher : false
     }
     return userRef.set(data)
   }
