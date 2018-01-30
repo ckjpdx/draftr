@@ -6,6 +6,8 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { CoreModule } from './core/core.module';
 import { routing } from './app.routing';
 
+import { NewProjectComponent } from './new-project/new-project.component';
+
 import { AppComponent } from './app.component';
 import { ProfileComponent } from './profile/profile.component';
 import { AllProjectsComponent } from './all-projects/all-projects.component';
@@ -26,14 +28,16 @@ var firebaseConfig = {
     ProfileComponent,
     AllProjectsComponent,
     ProjectDetailComponent,
-    LoginComponent
+    LoginComponent,
+      NewProjectComponent
   ],
   imports: [
     BrowserModule,
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFirestoreModule,
     CoreModule,
-    routing
+    routing,
+      FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
