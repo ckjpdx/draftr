@@ -1,4 +1,5 @@
 body{
+  color: white;
     /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#00c1eb+0,284670+54,091628+100 */
     background: #00c1eb; /* Old browsers */
     background: -moz-linear-gradient(45deg, #00c1eb 0%, #284670 54%, #091628 100%); /* FF3.6-15 */
@@ -8,8 +9,8 @@ body{
     height: 100vh;
     font-family: 'Jura', sans-serif;
 }
+
 h1, h2, h3, h4, h5, h6 {
-    color: white;
     font-weight: 300
 }
 app-login {

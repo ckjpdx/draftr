@@ -11,19 +11,26 @@ import { Project, ProjectId } from './../core/project.model';
   providers: [AuthService, FirestoreService]
 })
 export class ProfileComponent implements OnInit {
-
-  constructor(public auth: AuthService, public fss: FirestoreService, public afs: AngularFirestore) { }
   myProjects: any;
   myProjectsCollection: AngularFirestoreCollection < Project >;
+  projectList: string[] = [];
+  ideaList: string[] = [];
+
+  constructor(public auth: AuthService, public fss: FirestoreService, public afs: AngularFirestore) { }
 
   ngOnInit() {
     this.auth.user.subscribe(author => {
-      console.log(author);
-        this.myProjectsCollection = this.afs.collection('projects', ref => ref.where('authorId', '==', `${author.uid}`));
-        this.myProjects = this.myProjectsCollection.valueChanges()
-        this.myProjects.subscribe(projects => {
-          console.table(projects)
-        })
+      this.myProjectsCollection = this.afs.collection('projects', ref => ref.where('authorId', '==', `${author.uid}`));
+      this.myProjects = this.myProjectsCollection.valueChanges();
+      this.myProjects.subscribe((projects) => {
+        projects.forEach((thisProject) => {
+          if (thisProject.ideaState === false){
+            this.projectList.push(thisProject.title);
+          } else {
+            this.ideaList.push(thisProject.title);
+          }
+        });
+      });
     });
   }
 
