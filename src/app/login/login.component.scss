@@ -1,0 +1,82 @@
+.home-box {
+    margin: auto;
+    width: 600px;
+    text-align: center;
+    color: #fff;
+}
+
+.login-box {
+    background: #3e3e3e;
+    padding: 51px;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    border-radius: 10px;
+    position: relative;
+    box-shadow: 1px 1px 3px #000;
+}
+h1 {
+    color: #cacaca;
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.45);
+    font-size: 5em;
+    margin-bottom: 0;
+    letter-spacing: 25px;
+}
+button.btn {
+    border: 1px solid #2d2d2d;
+    background: #212121;
+    color: #fff;
+    padding: 20px 33px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn .fa {
+    margin-right: 8px;
+    font-size: 1.3em;
+}
+
+.login-box > .btn {
+    margin-bottom: 34px;
+}
+
+span {
+    margin-bottom: 35px;
+    display: block;
+}
+
+a {
+    color: #02bde7;
+    text-decoration: none;
+}
+
+button.btn.google-btn {
+    background: #db3236;
+}
+
+button.btn.facebook-btn {
+    background: #3b5998;
+}
+
+input {padding: 10px;background: #2d2d2d;border-width: 1px;border-color: #000;}
+
+.form-group {
+    display: flex;
+    WIDTH: 100%;
+    justify-content: space-around;
+}
+
+.login-box:before {
+    position: absolute;
+    content: "";
+    top: 20PX;
+    left: 20px;
+    right: 20px;
+    bottom: 20px;
+    border-radius: 15px;
+    border: 1px solid #252525;
+    background: transparent;
+    z-index: 0;
+    pointer-events: none;
+    box-shadow: inset 0 0 4px rgba(0,0,0,.44);
+}

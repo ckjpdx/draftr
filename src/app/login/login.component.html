@@ -1,3 +1,24 @@
-<p>
-  login works!
-</p>
+<div *ngIf="auth.user | async; then authenticated; else guest"></div>
+
+
+<ng-template #guest>
+    <div class="home-box">
+        <h1>D.R.A.F.T.R</h1>
+
+        <div class="login-box">
+            <button class="btn google-btn" (click)="auth.googleLogin()"><i class="fa fa-google"></i> Login with Google</button>
+            <button class="btn facebook-btn" (click)="auth.facebookLogin()"><i class="fa fa-facebook"></i> Login with Google</button>
+            <div><span>Log In to get started, or <a href="" (click)="auth.createAccount()">create an account</a></span></div>
+            <div class="form-group">
+                <input type="email" placeholder="email" #email>
+                <input type="password" placeholder="Password" #password>
+                <button type="button" class="btn" (click)="auth.normalLogin(email.value, password.value)">Go!</button>
+            </div>
+        </div>
+    </div>
+
+</ng-template>
+
+<ng-template #authenticated>
+    <app-profile></app-profile>
+</ng-template>
