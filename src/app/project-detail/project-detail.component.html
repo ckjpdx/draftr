@@ -1,7 +1,7 @@
 <div class="single-project-display">
-  <h3>Title: {{ (singleProject | async)?.title}}</h3>
-  <h3>Author: {{ (singleProject | async)?.author}}</h3>
-  <h3>Course: {{ (singleProject | async)?.course}}</h3>
-  <h3>Contributors: {{ (singleProject | async)?.contributors}}</h3>
-  <p>Description: {{ (singleProject | async)?.description}}</p>
+  <h3>Title: {{ projectToDisplay.title}}</h3>
+  <h3>Author: {{ projectToDisplay.author}}</h3>
+  <h3>Course: {{ projectToDisplay.course}}</h3>
+  <h3>Contributors: {{ projectToDisplay.contributors}}</h3>
+  <p>Description: {{ projectToDisplay.description}}</p>
 </div>

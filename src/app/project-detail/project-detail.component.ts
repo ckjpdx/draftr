@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { ActivatedRoute, Params } from '@angular/router';
-import { Location } from '@angular/common';
 import { FirestoreService } from '../core/firestore.service';
 import { Project, ProjectId } from '../core/project.model';
 
@@ -12,15 +11,30 @@ import { Project, ProjectId } from '../core/project.model';
   providers: [FirestoreService]
 })
 export class ProjectDetailComponent implements OnInit {
-  // projects: any;
-  // singleProject: any;
-  projectId: string;
-  projectToDisplay;
+  projects: any;
+  projectObservable: any;
+  projectToDisplay: any;
+  id: string;
 
-  constructor(public fss: FirestoreService, private route: ActivatedRoute, private location: Location) { }
+
+  constructor(
+    public fss: FirestoreService,
+    private route: ActivatedRoute,
+  ) {}
 
   ngOnInit() {
+    this.route.params.forEach((urlParameters) => {
+      this.id = urlParameters['id'];
+      console.log(this.id);
+    });
+    this.projectObservable = this.fss.getProject(this.id)
+    console.table(this.projectObservable);
+    this.projectObservable.subscribe(project => {
+      // console.log(project);
+      this.projectToDisplay = project;
+      // console.log(projectToDisplay);
+    });
+
 
   }
-
 }
