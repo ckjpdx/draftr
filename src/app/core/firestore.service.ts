@@ -54,7 +54,6 @@ export class FirestoreService {
   }
 
   getProject(id){
-    alert('i am also this!');
     this.projectDoc = this.afs.doc('projects/' + id);
     console.log(id);
     return this.projectDoc.valueChanges();
