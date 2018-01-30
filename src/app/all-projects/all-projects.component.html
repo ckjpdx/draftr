@@ -1,3 +1,7 @@
-<p>
-  all-projects works!
-</p>
+<ul *ngFor="let project of projects | async" class="project-list">
+ <li (click)="getProject(post.id)">
+   <strong>{{ project.data.title }}</strong>
+   <br>
+   {{project.data.description}}
+ </li>
+</ul>

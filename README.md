@@ -1,27 +1,54 @@
 # Draftr
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.6.5.
+### An App for Navigating Edicodus Group Week
 
-## Development server
+## About
+This app
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+_By Shane Ryan, Colin Worf, Chris Knight Johnson, Cheryl Frankenfield, 1/29/18_
 
-## Code scaffolding
+## MVP Specs
+1. App will allow a group/user to add a new team project idea.
+Input:
+Output:
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+2. App will allow a group/user to view list of project ideas.
+Input:
+Output:
 
-## Build
+3. App will allow a group/user to sign up for a new team project.
+Input:
+Output:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+4. App will allow a group/user to edit team project entry.
+Input:
+Output:
 
-## Running unit tests
+5. App will allow a group/user to delete a team project entry.
+Input:
+Output:
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+6. App will allow a group/user to sign in to project.
+Input:
+Output:
 
-## Running end-to-end tests
+7. App will allow a team of students to chat and add comments for their specific group project. This will be private to that group's work only.(Group Authentication)
+Input:
+Output:
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+8. App will allow students after login, to select which cohort/class they are in for group week.
+Input: From dropdown form, student selects JavaScript.
+Output: Student is taken to view of JavaScript projects.
 
-## Further help
+## Stretch Goals
+1. App will allow students/users to comment on any project.
+2. App will allow students to like a project idea.
+3. App will allow teachers a master admin login to view and comment on all projects.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+## Technology Used
+* Angular
+* JavaScript
+* Firebase
+* Firestore
+* HTML
+* CSS
