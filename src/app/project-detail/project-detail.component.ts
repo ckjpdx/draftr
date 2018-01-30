@@ -38,9 +38,7 @@ export class ProjectDetailComponent implements OnInit {
   }
 
   canJoin() {
-    if ()
   }
   canLeave(){
-    if ()
   }
 }
