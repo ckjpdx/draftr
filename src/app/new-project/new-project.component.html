@@ -1,7 +1,7 @@
 <div class="new-project-creator">
-  <input #newTitle type="text" name="title" placeholder="title">
-  <input #newAuthor type="text" name="author" placeholder="author">
-  <input #newCourse type="text" name="course" placeholder="course">
-  <input #newDescription type="text" name="description" placeholder="description">
-  <button (click)="submitForm(newTitle.value, newAuthor.value, newCourse.value, newDescription.value); newTitle.value= ''; newAuthor.value= ''; newCourse.value= ''; newDescription.value= ''" >Instantiate!</button>
+  <input type="text" [(ngModel)]="title" placeholder="title">
+  <input type="text" [(ngModel)]="author" placeholder="author">
+  <input type="text" [(ngModel)]="course" placeholder="course">
+  <input type="text" [(ngModel)]="description" placeholder="description">
+  <button (click)="doAddProject()">Instantiate!</button>
 </div>

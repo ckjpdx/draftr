@@ -14,7 +14,7 @@ export class NewProjectComponent implements OnInit {
     // let newProject; need to use fire store to do this;
     //will need a service to send the new project to the list;
   }
-
+ //doAdd
   ngOnInit() {
   }
 

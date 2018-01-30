@@ -10,7 +10,7 @@ import { Project } from '../core/project.model';
 export class AllProjectsComponent implements OnInit {
 
   constructor() { }
-
+  //onInit will run getProject function
   ngOnInit() {
   }
 
