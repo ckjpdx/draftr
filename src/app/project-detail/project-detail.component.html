@@ -1,5 +1,19 @@
-<h2>Title: {{project.data.title}}</h2>
-<h2>Author: {{project.data.author}}</h2>
-<h2>Course: {{project.data.course}}</h2>
-<h2>Description: {{project.data.description}}</h2>
-<h2>Contributors: {{project.data.contributors}}</h2>
+<!-- Displays Individual Clicked Project-->
+<div class="single-project-display">
+  <h3>Title: {{projectToDisplay.title}}</h3>
+  <h3>Author: {{ projectToDisplay.authorName}}</h3>
+  <h3>Course: {{ projectToDisplay.course}}</h3>
+  <h3>Contributors: {{ projectToDisplay.contributors}}</h3>
+  <p>Description: {{ projectToDisplay.description}}</p>
+</div>
+
+<!--Display for contributor signup-->
+<div *ngIf="canJoin()" class="contributors-signup">
+</div>
+
+<div class="signup-form">
+  <input type="text" name="" value="">
+  <input type="text" name="" value="">
+  <input type="text" name="" value="">
+  <input type="text" name="" value="">
+</div>
