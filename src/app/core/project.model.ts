@@ -1,10 +1,10 @@
 export interface Project {
   title: string,
-  author: string,
+  authorName: string,
+  authorId: string,
   course: string,
-  state: string,
-  description: string,
-  contributors: string[],
+  ideaState: boolean,
+  description: string
 }
 
 export interface ProjectId extends Project {

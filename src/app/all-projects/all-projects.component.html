@@ -1,7 +1,7 @@
-<div class="project-list">
-  <h2>Title: {{project.data.title}}</h2>
-  <h2>Author: {{project.data.author}}</h2>
-  <h2>Course: {{project.data.course}}</h2>
-  <h2>Description: {{project.data.description}}</h2>
-  <h2>Contributors: {{project.data.contributors}}</h2>
-</div>
+<ul *ngFor="let project of projects | async" class="project-list">
+ <li>
+   <strong>{{ project.title }}</strong>
+   <br>
+   {{project.description}}
+ </li>
+</ul>
