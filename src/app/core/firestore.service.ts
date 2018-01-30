@@ -39,18 +39,8 @@ export class FirestoreService {
       }
   }
 
-  getProjects(requestedUserProjects ? ){
-    if (requestedUserProjects){
-      this.auth.user.subscribe(author => {
-        let uid = author.uid;
-        this.authorName = author.displayName;
-        this.myProjectCollection = this.afs.collection('projects', ref =>
-        ref.where('authorId', '==', `${uid}`));
-        this.myProjectCollection.valueChanges()
-      });
-    }else{
-      return this.projects;
-    }
+  getProjects(){
+    return this.projects;
   }
 
 

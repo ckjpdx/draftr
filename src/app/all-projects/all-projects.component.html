@@ -1,7 +1,7 @@
 <ul *ngFor="let project of projects | async" class="project-list">
- <li (click)="getProject(post.id)">
+ <li>
    <strong>{{ project.data.title }}</strong>
    <br>
-   {{project.data.description}}
+   {{ project.data.description }}
  </li>
 </ul>
