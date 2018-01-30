@@ -1,5 +1,7 @@
-<h2>Title: {{project.data.title}}</h2>
-<h2>Author: {{project.data.author}}</h2>
-<h2>Course: {{project.data.course}}</h2>
-<h2>Description: {{project.data.description}}</h2>
-<h2>Contributors: {{project.data.contributors}}</h2>
+<div class="single-project-display">
+  <h3>Title: {{ (singleProject | async)?.title}}</h3>
+  <h3>Author: {{ (singleProject | async)?.author}}</h3>
+  <h3>Course: {{ (singleProject | async)?.course}}</h3>
+  <h3>Contributors: {{ (singleProject | async)?.contributors}}</h3>
+  <p>Description: {{ (singleProject | async)?.description}}</p>
+</div>

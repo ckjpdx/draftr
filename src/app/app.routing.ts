@@ -22,6 +22,11 @@ const appRoutes: Routes = [
   		component: ProfileComponent,
 		// canActivate: [AuthGuard]
 	},
+	{
+  		path: 'project-detail/:id',
+  		component: ProjectDetailComponent,
+		// canActivate: [AuthGuard]
+	}
 
 ];
 
