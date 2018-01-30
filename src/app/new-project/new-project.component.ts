@@ -1,14 +1,21 @@
 import { Component, OnInit } from '@angular/core';
 import { Project } from '../core/project.model';
+import { FirestoreService } from '../core/firestore.service';
+import { AuthService } from '../core/auth.service';
 
 @Component({
   selector: 'app-new-project',
   templateUrl: './new-project.component.html',
-  styleUrls: ['./new-project.component.css']
+  styleUrls: ['./new-project.component.css'],
+  providers: [AuthService, FirestoreService]
 })
 export class NewProjectComponent implements OnInit {
 
-  constructor() { }
+  title: string;
+  course: string;
+  description: string;
+
+  constructor(private fss: FirestoreService, private auth: AuthService) { }
 //submitForm does not match the project model;
   submitForm(title: string, author: string, course: string, description: string){
     // let newProject; need to use fire store to do this;
@@ -16,6 +23,10 @@ export class NewProjectComponent implements OnInit {
   }
  //doAdd
   ngOnInit() {
+
   }
 
+  doAddProject(){
+    this.fss.addProject({title: this.title, authorName: this.fss.authorName, authorId: this.fss.authorId, course: this.course, ideaState: true, description: this.description })
+  }
 }
