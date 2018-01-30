@@ -30,11 +30,17 @@ export class ProjectDetailComponent implements OnInit {
     this.projectObservable = this.fss.getProject(this.id)
     console.table(this.projectObservable);
     this.projectObservable.subscribe(project => {
-      // console.log(project);
+      console.log(project);
       this.projectToDisplay = project;
       // console.log(projectToDisplay);
     });
 
+  }
 
+  canJoin() {
+    if ()
+  }
+  canLeave(){
+    if ()
   }
 }

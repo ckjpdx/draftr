@@ -4,7 +4,10 @@ export interface Project {
   authorId: string,
   course: string,
   ideaState: boolean,
-  description: string
+  description: string,
+  contributors: string[],
+  limitMembers: number
+
 }
 
 export interface ProjectId extends Project {
