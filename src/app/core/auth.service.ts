@@ -4,15 +4,17 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { Observable } from 'rxjs/Observable';
 import { Router } from "@angular/router";
 import * as firebase from 'firebase/app';
+import { User } from './user.model';
 
 import 'rxjs/add/operator/switchMap'; // loops thru observable ?
 
 @Injectable()
 export class AuthService {
   user: Observable<User>;
+  twinkie:boolean;
 
   constructor(private afAuth: AngularFireAuth, private afs: AngularFirestore, private router: Router) {
-    this.user = afAuth.authState.user.switchMap(user => { // authState checks for existance of user & if true then user is passed as param
+    this.user = afAuth.authState.switchMap(user => { // authState checks for existance of user & if true then user is passed as param
       if (user) {
       return this.afs.doc<User>(`users/${user.uid}`).valueChanges();
       } else {
@@ -21,9 +23,9 @@ export class AuthService {
     });
   }
 
-  creamyCenter(cream){
-    this.twinkie.inject(cream);
-  }
+  // creamyCenter(cream){
+  //   this.twinkie.inject(cream);
+  // }
 
   normalLogin(email, pw){
 	  console.log(email)
@@ -58,7 +60,11 @@ export class AuthService {
       uid: user.uid,
       email: user.email,
       displayName: user.displayName ? user.displayName : user.email,
-      photoURL: user.photoURL
+      photoURL: user.photoURL,
+      currentProject: user.currentProject,
+      projects: user.projects,
+      ideas: user.ideas,
+      isTeacher: user.isTeacher
     }
     return userRef.set(data)
   }

@@ -1,10 +1,10 @@
 export interface User{
-  uid: string;
-	name: string;
-  email: string;
-  currentProject?: string;
-	projects?: string[];
-	ideas?: string[];
-  avatar?: string;
-  isTeacher: boolean;
+    uid: string;
+    displayName: string;
+    email: string;
+    currentProject?: string;
+    projects?: string[];
+    ideas?: string[];
+    photoURL?: string;
+    isTeacher: boolean;
 }
