@@ -14,6 +14,10 @@ import { AllProjectsComponent } from './all-projects/all-projects.component';
 import { ProjectDetailComponent } from './project-detail/project-detail.component';
 import { LoginComponent } from './login/login.component';
 
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { TooltipModule } from 'ngx-bootstrap/tooltip';
+import { ModalModule } from 'ngx-bootstrap/modal';
+
 var firebaseConfig = {
   apiKey: "AIzaSyAxMjMn9totpu8iUM55JPOzKnAq7xXGYks",
   authDomain: "draftr-c8408.firebaseapp.com",
@@ -37,7 +41,10 @@ var firebaseConfig = {
     AngularFirestoreModule,
     CoreModule,
     routing,
-      FormsModule
+      FormsModule,
+      BsDropdownModule.forRoot(),
+    TooltipModule.forRoot(),
+    ModalModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
