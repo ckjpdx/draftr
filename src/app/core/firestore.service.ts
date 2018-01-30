@@ -53,7 +53,9 @@ export class FirestoreService {
     this.afs.collection('projects').add(project);
   }
   getProject(id){
+    alert('i am also this!');
     this.projectDoc = this.afs.doc('projects/' + id);
+    console.log(id);
     return this.projectDoc.valueChanges();
   }
 

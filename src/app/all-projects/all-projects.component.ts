@@ -11,14 +11,20 @@ import { Observable } from 'rxjs/Observable';
 })
 export class AllProjectsComponent implements OnInit {
 
-  constructor(public fss: FirestoreService) { }
     projects: any;
     singleProject: any;
 
-  //onInit will run getProject function
+  constructor(public fss: FirestoreService) { }
+
   ngOnInit() {
     this.projects = this.fss.getProjects()
     console.log(this.projects)
+  }
+
+  getSingleProject(id) {
+    console.log(id);
+    alert('thiis!');
+    this.singleProject = this.fss.getProject(id);
   }
 
 }
