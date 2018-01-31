@@ -10,10 +10,9 @@
 <app-edit-project [selectedProject]="projectToDisplay" *ngIf="canEdit"></app-edit-project>
 
 <!--Display for contributor signup-->
-
-<!-- <div *ngIf="canJoin()" class="contributors-signup">
-  <button (click)="signMeUp(user.uid)" type="button" name="button">Signup</button>
-</div> -->
+<div class="contributors-signup">
+  <button *ngIf="canJoin" type="button" name="button">Signup</button>
+</div>
 
 <div class="comments">
     <h3>comments</h3>
