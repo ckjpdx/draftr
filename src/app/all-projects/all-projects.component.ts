@@ -4,6 +4,7 @@ import { FirestoreService } from '../core/firestore.service';
 // import { ActivatedRoute, Params } from '@angular/router';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
+import { ClassesService } from '../core/classes.service';
 
 @Component({
   selector: 'app-all-projects',
@@ -15,9 +16,13 @@ export class AllProjectsComponent implements OnInit {
 
     projects: any;
     singleProject: any;
+    selectedClass: string;
+    selectedStage: string;
+    showAvailable: boolean;
 
   constructor(
     public fss: FirestoreService,
+    public classes: ClassesService,
     public router: Router
   ) { }
 
@@ -27,8 +32,8 @@ export class AllProjectsComponent implements OnInit {
   }
 
   getSingleProject(id) {
-    this.singleProject = this.fss.getProject(id);
-    console.log(this.singleProject);
+    this.fss.getProject(id);
+    // console.log(this.singleProject);
     this.router.navigate(['project-detail/', id]);
   }
 

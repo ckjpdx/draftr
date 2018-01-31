@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { FirestoreService } from '../core/firestore.service';
 
 @Component({
   selector: 'app-edit-project',
@@ -9,11 +10,12 @@ export class EditProjectComponent implements OnInit {
 
   @Input() selectedProject;
 
-  constructor() { }
+  constructor(private fss: FirestoreService) { }
 
   ngOnInit() {
   }
-  doneEditing(){
 
+  doneEditing(){
+      this.fss.updateProject(this.selectedProject.id, this.selectedProject.data)
   }
 }

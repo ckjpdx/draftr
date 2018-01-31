@@ -1,7 +1,52 @@
-<ul *ngFor="let project of projects | async" class="project-list">
- <li (click)="getSingleProject(project.id)">
-   <strong>{{ project.data.title }}</strong>
-   <br>
-   {{ project.data.description }}
- </li>
-</ul>
+<div class="top-bar">
+    <div class="page-title">
+        Epicodus Project Center
+    </div>
+    <div class="bar-content">
+        <div class="pipe">
+            <label for="class-filter">By Class: </label>
+            <select id="class-filter" class="project-filter" name="filter" [(ngModel)]="selectedClass">
+                <option value="all" selected="selected">All Classes</option>
+                <option *ngFor="let class of classes.classList" >{{class}}</option>
+            </select>
+        </div>
+        <div class="pipe">
+            <label for="stage-filter">By Stage: </label>
+            <select id="stage-filter" class="project-filter" name="filter" [(ngModel)]="selectedStage">
+                <option value="all">All Stages</option>
+                <option value="idea">Idea</option>
+                <option value="active">Active Project</option>
+                <option value="completed">Completed</option>
+            </select>
+        </div>
+        <div class="pipe check">
+            <input type="checkbox" id="completed-filter" class="project-filter" [(ngModel)]="showAvailable">
+            <label for="completed-filter"> Show available only</label>
+        </div>
+    </div>
+
+</div>
+<div class="page-content container">
+    <div class="project-list">
+        <div *ngFor="let project of projects | async"  class="project-box"  [class.open-project]="!project.data.contributors">
+            <h3 class="title">{{ project.data.title }}</h3>
+            <div class="detail">
+                <div class="meta-box">
+                    <div class="meta-title">
+                        Description
+                    </div>
+                    {{ project.data.description }}
+                </div>
+                <div class="meta-box" [class.open-project]="!project.data.contributors">
+                    <div class="meta-title">
+                        contributors
+                    </div>
+                    <span *ngFor="let member of project.data.contributors; let isLast=last">{{ member }}{{isLast ? '' : ', '}}</span>
+                    <span *ngIf="!project.data.contributors">open Project</span>
+
+                </div>
+            </div>
+            <button type="button" class="btn detail-btn" name="button"(click)="getSingleProject(project.id)">See Details</button>
+        </div>
+    </div>
+</div>

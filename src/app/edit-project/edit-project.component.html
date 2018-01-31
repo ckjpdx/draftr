@@ -1,7 +1,27 @@
-<!-- Displays Individual Clicked Project-->
-<div class="single-project-display">
-  <h3>Title: <input type="text" [(ngModel)]="selectedProject.title"></h3>
-  <h3>Course: <input type="text" [(ngModel)]="selectedProject.course"></h3>
-  <p>Description: <textarea type="text" [(ngModel)]="selectedProject.description"></textarea> </p>
-  <button (click)="doneEditing()">Confirm</button>
+
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editModal">
+  Edit This Project
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="modalTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalTitle">Edit Project</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          Title: <input type="text" [(ngModel)]="selectedProject.data.title">
+          Course: <input type="text" [(ngModel)]="selectedProject.data.course">
+          Description: <textarea type="text" [(ngModel)]="selectedProject.data.description"></textarea>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-primary" (click)="doneEditing()" data-dismiss="modal">Accept Changes</button>
+      </div>
+    </div>
+  </div>
 </div>

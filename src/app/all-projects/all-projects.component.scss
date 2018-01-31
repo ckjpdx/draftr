@@ -1,0 +1,69 @@
+
+.top-bar {
+    background: #3c424e;
+    padding: 20px 30px 20px;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+}
+
+.bar-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.page-title {
+    font-weight: 900;
+    font-size: 25px;
+}
+
+.pipe {
+    display: flex;
+    align-items: center;
+}
+
+.pipe label, .pipe input {
+    margin: auto 10px auto 0;
+}
+
+.pipe select {
+    background: #2d2d2d;
+    color: #fff;
+}
+
+.page-content {
+    padding-top: 50px;
+}
+
+.project-list {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-gap: 50px;
+}
+
+h3.title {
+    text-align: center;
+    border-bottom: 1px solid;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+.meta-box {
+    margin-bottom: 10px;
+    background: #313640;
+    padding: 7px 15px 15px;
+    box-shadow: inset 0 0 4px #000;
+}
+
+.meta-title {
+    font-size: 0.8em;
+    text-decoration: underline;
+    margin-left: 0px;
+    color: #c7c7c7;
+}
+
+button.btn.detail-btn {
+    display: block!important;
+    width: 100%;
+}

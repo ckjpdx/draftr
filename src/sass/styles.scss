@@ -14,3 +14,23 @@ app-login {
     height: 100vh;
     display: flex;
 }
+
+button.btn {
+    border: 1px solid #2d2d2d;
+    background: #212121;
+    color: #fff;
+    padding: 10px 33px;
+    border-radius: 4px;
+    cursor: pointer;
+    &:hover {
+        background: #3b4a65;
+    }
+}
+nav, .top-bar {
+    box-shadow: 0 0 3px #000;
+}
+
+.btn .fa {
+    margin-right: 8px;
+    font-size: 1.3em;
+}

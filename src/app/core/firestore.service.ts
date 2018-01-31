@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
 import { Project, ProjectId } from '../core/project.model';
+import { Comment } from '../core/comment.model';
 import { Observable } from 'rxjs/Observable';
 import { AuthService } from './auth.service';
 import * as firebase from 'firebase/app';
@@ -18,6 +19,8 @@ export class FirestoreService {
 
   projectDoc: AngularFirestoreDocument < Project >
   singleProject: Observable < Project >;
+
+  commentsCollection: AngularFirestoreCollection < Comment >
 
   constructor(private afs: AngularFirestore, private auth: AuthService) {
     this.projectsCollection = this.afs.collection('projects');
@@ -56,11 +59,37 @@ export class FirestoreService {
   getProject(id){
     this.projectDoc = this.afs.doc('projects/' + id);
     console.log(id);
-    return this.projectDoc.valueChanges();
+    return this.projectDoc.snapshotChanges()
+      .map(actions => {
+          const data = actions.payload.data() as Project;
+          const id = actions.payload.id;
+          console.table({id, data});
+          return {id, data};
+      });
   }
 
-  deletePost(id) {
+  deleteProject(id) {
     console.log(id)
     this.afs.doc('project/' + id).delete();
+  }
+
+  updateProject(id, newProj){
+    this.projectsCollection.doc(id).update({
+        title:newProj.title,
+        description: newProj.description,
+        course: newProj.course
+    })
+    .then(() => {
+      console.log('updated');
+    })
+  }
+
+  getComments(id){
+      this.commentsCollection = this.projectsCollection.doc(id).collection('comments');
+      return this.commentsCollection.valueChanges();
+  }
+
+  addComment(projectId, comment){
+      this.projectsCollection.doc(projectId).collection('comments').add(comment);
   }
 }
