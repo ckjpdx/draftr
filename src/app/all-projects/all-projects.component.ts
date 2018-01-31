@@ -32,8 +32,8 @@ export class AllProjectsComponent implements OnInit {
   }
 
   getSingleProject(id) {
-    this.singleProject = this.fss.getProject(id);
-    console.log(this.singleProject);
+    this.fss.getProject(id);
+    // console.log(this.singleProject);
     this.router.navigate(['project-detail/', id]);
   }
 

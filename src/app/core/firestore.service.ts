@@ -71,7 +71,11 @@ export class FirestoreService {
   }
 
   updateProject(id, newProj){
-    this.projectsCollection.doc(id).update({newProj})
+    this.projectsCollection.doc(id).update({
+        title:newProj.title,
+        description: newProj.description,
+        course: newProj.course
+    })
     .then(() => {
       console.log('updated');
     })
