@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-edit-project',
@@ -7,9 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EditProjectComponent implements OnInit {
 
+  @Input() selectedProject;
+
   constructor() { }
 
   ngOnInit() {
   }
-
+  doneEditing(){
+    
+  }
 }
