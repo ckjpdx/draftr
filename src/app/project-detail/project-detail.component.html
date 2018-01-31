@@ -5,7 +5,6 @@
   <h3>Course: {{ projectToDisplay.data.course}}</h3>
   <h3>Contributors: {{ projectToDisplay.data.contributors}}</h3>
   <p>Description: {{ projectToDisplay.data.description}}</p>
-  {{projectToDisplay.data.authorId}}
 </div>
 
 <app-edit-project [selectedProject]="projectToDisplay" *ngIf="canEdit"></app-edit-project>
@@ -15,3 +14,19 @@
 <!-- <div *ngIf="canJoin()" class="contributors-signup">
   <button (click)="signMeUp(user.uid)" type="button" name="button">Signup</button>
 </div> -->
+
+<div class="comments">
+    <h3>comments</h3>
+    <div *ngFor="let comment of comments | async">
+        {{comment.message}}<br>
+        <img src="{{comment.photoUrl}}" alt="" width="50px"><br>
+        {{comment.timeStamp}}<br>
+        {{comment.authorName}}<br>
+
+    </div>
+</div>
+
+<div class="comment-bar">
+    <input type="text" name="" value="" [(ngModel)]="message" placeholder="Leave a Comment">
+    <button type="button" class="btn" name="button" (click)="postComment(); message=''">Post</button>
+</div>

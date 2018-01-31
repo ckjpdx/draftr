@@ -20,17 +20,22 @@ export class ProjectDetailComponent implements OnInit {
   id: string;
   canEdit: boolean;
   limitMembers: number;
+  comments:any;
+  message: string;
+  photoUrl: string;
 
   constructor(
     public fss: FirestoreService,
     public route: ActivatedRoute,
     public auth: AuthService
-  ) {}
+  ) {
+
+  }
 
   ngOnInit() {
     this.route.params.forEach((urlParameters) => {
       this.id = urlParameters['id'];
-      console.log(this.id);
+
     });
     this.projectObservable = this.fss.getProject(this.id)
     console.table(this.projectObservable);
@@ -41,9 +46,17 @@ export class ProjectDetailComponent implements OnInit {
           if (user.uid === this.projectToDisplay.data.authorId) {
               this.canEdit = true;
           }
+          this.photoUrl = user.photoURL;
+          //set comments array
+          console.log(this.id);
+          this.comments = this.fss.getComments(this.id)
       })
     });
+    }
 
+    postComment(){
+        const timestamp = Date.now();
+        this.fss.addComment(this.id, {message: this.message, authorName: this.fss.authorName, photoUrl: this.photoUrl, timeStamp: timestamp})
     }
     // canJoin() {
       // console.log(projectToDisplay);
