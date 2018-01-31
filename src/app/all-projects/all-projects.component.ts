@@ -4,6 +4,7 @@ import { FirestoreService } from '../core/firestore.service';
 // import { ActivatedRoute, Params } from '@angular/router';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
+import { ClassesService } from '../core/classes.service';
 
 @Component({
   selector: 'app-all-projects',
@@ -18,6 +19,7 @@ export class AllProjectsComponent implements OnInit {
 
   constructor(
     public fss: FirestoreService,
+    public classes: ClassesService,
     public router: Router
   ) { }
 

@@ -1,7 +1,21 @@
-<ul *ngFor="let project of projects | async" class="project-list">
+<div class="top-bar">
+    <div class="page-title">
+        Epicodus Project Center
+    </div>
+    <div class="bar-content">
+        <div class="pipe">
+            <span>By Class: </span>
+            <select class="project-filter" name="filter" [(ngModel)]="selectedClass">
+                <option value="all" selected="selected">All Classes</option>
+                <option *ngFor="let class of classes.classList" >{{class}}</option>
+            </select>
+        </div>
+    </div>
+</div>
+<div *ngFor="let project of projects | async" class="project-list">
  <li (click)="getSingleProject(project.id)">
    <strong>{{ project.data.title }}</strong>
    <br>
    {{ project.data.description }}
  </li>
-</ul>
+</div>
