@@ -37,7 +37,7 @@ export class ProjectDetailComponent implements OnInit {
       this.projectToDisplay = project;
     });
 
-    canJoin() {
+    // canJoin() {
       // console.log(projectToDisplay);
 //       // console.log(projectToDisplay.limitMembers);
 //       // console.log(projectToDisplay.contributors);
@@ -47,9 +47,7 @@ export class ProjectDetailComponent implements OnInit {
 //       } else {
 //         alert("this project is full");
 //       }
-//     }
-
-
+    // }
  }
 //If spots are available, click SignUp button and runs this function
   // signMeUp(id){

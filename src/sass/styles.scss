@@ -1,15 +1,12 @@
 body{
-  color: white;
     /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#00c1eb+0,284670+54,091628+100 */
     background: #00c1eb; /* Old browsers */
-    background: -moz-linear-gradient(45deg, #00c1eb 0%, #284670 54%, #091628 100%); /* FF3.6-15 */
-    background: -webkit-linear-gradient(45deg, #00c1eb 0%,#284670 54%,#091628 100%); /* Chrome10-25,Safari5.1-6 */
-    background: linear-gradient(45deg, #00c1eb 0%,#284670 54%,#091628 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    background: linear-gradient(45deg, #282c34 0%, #21252b 100%);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00c1eb', endColorstr='#091628',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
-    height: 100vh;
+    min-height: 100vh;
     font-family: 'Jura', sans-serif;
-}
 
+}
 h1, h2, h3, h4, h5, h6 {
     font-weight: 300
 }
