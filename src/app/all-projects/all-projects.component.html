@@ -28,7 +28,7 @@
 </div>
 <div class="page-content container">
     <div class="project-list">
-        <div *ngFor="let project of projects | async"  class="project-box"  [class.open-project]="!project.data.contributors" (click)="getSingleProject(project.id)">
+        <div *ngFor="let project of projects | async"  class="project-box"  [class.open-project]="!project.data.contributors">
             <h3 class="title">{{ project.data.title }}</h3>
             <div class="detail">
                 <div class="meta-box">
@@ -46,6 +46,7 @@
 
                 </div>
             </div>
+            <button type="button" class="btn detail-btn" name="button"(click)="getSingleProject(project.id)">See Details</button>
         </div>
     </div>
 </div>
