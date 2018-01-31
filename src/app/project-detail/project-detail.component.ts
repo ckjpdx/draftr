@@ -19,6 +19,7 @@ export class ProjectDetailComponent implements OnInit {
   projectToDisplay: any;
   id: string;
   canEdit: boolean;
+  canJoin: boolean;
   limitMembers: number;
   comments:any;
   message: string;
@@ -50,25 +51,27 @@ export class ProjectDetailComponent implements OnInit {
           //set comments array
           console.log(this.id);
           this.comments = this.fss.getComments(this.id)
+          console.log(project);
+          console.log(project.data.limitMembers);
+          console.log(project.data.contributors.length);
+          if (project.data.contributors.length <= project.data.limitMembers) {
+            alert('this fires');
+            this.canJoin = true;
+            alert(this.canJoin);
+          } else {
+            alert("this project is full");
+          }
       })
     });
-    }
+  }
+
+
+
 
     postComment(){
         const timestamp = Date.now();
         this.fss.addComment(this.id, {message: this.message, authorName: this.fss.authorName, photoUrl: this.photoUrl, timeStamp: timestamp})
     }
-    // canJoin() {
-      // console.log(projectToDisplay);
-//       // console.log(projectToDisplay.limitMembers);
-//       // console.log(projectToDisplay.contributors);
-// // pseudo code - if there are contributor spaces available, show SignUp Button, else show indicator that project is full
-//       if (projectToDisplay.contributors.length <= projectToDisplay.limitMembers) {
-//         const signupButton = document.querySelect('.contributors-signup');
-//       } else {
-//         alert("this project is full");
-//       }
-    // }
 
 //If spots are available, click SignUp button and runs this function
   // signMeUp(id){
