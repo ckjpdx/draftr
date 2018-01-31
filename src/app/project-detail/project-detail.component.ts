@@ -5,6 +5,7 @@ import { FirestoreService } from '../core/firestore.service';
 import { Project, ProjectId } from '../core/project.model';
 import { User } from '../core/user.model';
 import { AuthService } from '../core/auth.service';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-project-detail',
@@ -38,9 +39,7 @@ export class ProjectDetailComponent implements OnInit {
 
     });
     this.projectObservable = this.fss.getProject(this.id)
-    console.table(this.projectObservable);
     this.projectObservable.subscribe(project => {
-      console.log(project);
       this.projectToDisplay = project;
       this.auth.user.subscribe(user => {
           if (user.uid === this.projectToDisplay.data.authorId) {
@@ -48,30 +47,15 @@ export class ProjectDetailComponent implements OnInit {
           }
           this.photoUrl = user.photoURL;
           //set comments array
-          console.log(this.id);
           this.comments = this.fss.getComments(this.id)
       })
     });
     }
 
     postComment(){
-        const timestamp = Date.now();
+        const timestamp = Date.now()
+        const timestamp = moment(timestamp).format('MMMM Do YYYY, h:mm:ss a');
+        console.log(timestamp)
         this.fss.addComment(this.id, {message: this.message, authorName: this.fss.authorName, photoUrl: this.photoUrl, timeStamp: timestamp})
     }
-    // canJoin() {
-      // console.log(projectToDisplay);
-//       // console.log(projectToDisplay.limitMembers);
-//       // console.log(projectToDisplay.contributors);
-// // pseudo code - if there are contributor spaces available, show SignUp Button, else show indicator that project is full
-//       if (projectToDisplay.contributors.length <= projectToDisplay.limitMembers) {
-//         const signupButton = document.querySelect('.contributors-signup');
-//       } else {
-//         alert("this project is full");
-//       }
-    // }
-
-//If spots are available, click SignUp button and runs this function
-  // signMeUp(id){
-  //   this.user.uid = this.currentProject;
-  // }
 }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Project } from '../core/project.model';
 import { FirestoreService } from '../core/firestore.service';
 import { AuthService } from '../core/auth.service';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-new-project',
@@ -27,6 +28,8 @@ export class NewProjectComponent implements OnInit {
   }
 
   doAddProject(){
-    this.fss.addProject({title: this.title, authorName: this.fss.authorName, authorId: this.fss.authorId, course: this.course, ideaState: true, description: this.description })
+      const timestamp = Date.now();
+      const timestampformatted = moment(timestamp).format('MMMM Do YYYY, h:mm:ss a');
+    this.fss.addProject({title: this.title, authorName: this.fss.authorName, authorId: this.fss.authorId, course: this.course, ideaState: true, description: this.description, timeStamp: timestamp, timeStampFormatted: timestampformatted})
   }
 }
