@@ -6,7 +6,9 @@ export interface Project {
   ideaState: boolean,
   description: string,
   contributors: string[],
-  limitMembers: number
+  limitMembers: number,
+  timeStamp: number,
+  timeStampFormatted: string
 }
 
 export interface ProjectId extends Project {

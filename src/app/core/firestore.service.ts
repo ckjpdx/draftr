@@ -24,12 +24,12 @@ export class FirestoreService {
 
   constructor(private afs: AngularFirestore, private auth: AuthService) {
     this.projectsCollection = this.afs.collection('projects');
+    // , ref => ref.orderBy('timeStamp') 
     this.projects = this.projectsCollection.snapshotChanges()
       .map(actions => {
         return actions.map(a =>{
           const data = a.payload.doc.data() as Project;
           const id = a.payload.doc.id;
-          console.table({id, data});
           return {id, data};
         });
       });
@@ -83,9 +83,18 @@ export class FirestoreService {
       console.log('updated');
     })
   }
+  //updateContributors(cheese, whiz)
+  updateContributors(id, newArray) {
+    this.projectsCollection.doc(id).update({
+      contributors: newArray
+    })
+    .then(() => {
+      console.log('contrib is updated');
+    })
+  }
 
   getComments(id){
-      this.commentsCollection = this.projectsCollection.doc(id).collection('comments');
+      this.commentsCollection = this.projectsCollection.doc(id).collection('comments', ref => ref.orderBy('timeStamp'));
       return this.commentsCollection.valueChanges();
   }
 
