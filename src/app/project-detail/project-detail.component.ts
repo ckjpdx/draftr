@@ -42,9 +42,7 @@ export class ProjectDetailComponent implements OnInit {
 
     });
     this.projectObservable = this.fss.getProject(this.id)
-    console.table(this.projectObservable);
     this.projectObservable.subscribe(project => {
-      console.log(project);
       this.projectToDisplay = project;
       this.auth.user.subscribe(user => {
         this.currentUser = user;
@@ -53,18 +51,11 @@ export class ProjectDetailComponent implements OnInit {
           }
           this.photoUrl = user.photoURL;
           //set comments array
-          console.log(this.id);
           this.comments = this.fss.getComments(this.id)
-          console.log(project);
-          console.log(project.data.limitMembers);
-          console.log(project.data.contributors.length);
-          console.log(this.projectToDisplay.data.contributors);
-          if (project.data.contributors.length <= project.data.limitMembers) {
-            alert('this fires');
+          if (project.data.contributors.length < project.data.limitMembers && !user.currentProject) {
             this.canJoin = true;
-            alert(this.canJoin);
           } else {
-            alert("this project is full");
+            this.canJoin = false;
           }
       })
     });
@@ -80,12 +71,13 @@ export class ProjectDetailComponent implements OnInit {
 
 //If spots are available, click SignUp button and runs this function
   signMeUp() {
-    alert('buuu-iinn werks');
-    console.log(this.currentUser.displayName);
-    const newArray: string[] = this.projectToDisplay.data.contributors;
-     newArray.push(this.currentUser.displayName);
-    console.log(newArray);
-    this.fss.updateContributers(this.id, newArray);
+    if (this.canJoin) {
+      const newArray: string[] = this.projectToDisplay.data.contributors;
+       newArray.push(this.currentUser.displayName);
+      this.fss.updateContributers(this.id, newArray);
+    } else {
+      alert("yu are not allowed")
+    }
 
   }
 

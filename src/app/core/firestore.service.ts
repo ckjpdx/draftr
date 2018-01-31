@@ -86,7 +86,7 @@ export class FirestoreService {
   //updateContributers(cheese, whiz)
   updateContributers(id, newArray) {
     this.projectsCollection.doc(id).update({
-      contributors:newArray.contributor,
+      contributors: newArray
     })
     .then(() => {
       console.log('contrib is updated');
