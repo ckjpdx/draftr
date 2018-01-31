@@ -16,6 +16,9 @@ export class AllProjectsComponent implements OnInit {
 
     projects: any;
     singleProject: any;
+    selectedClass: string;
+    selectedStage: string;
+    showAvailable: boolean;
 
   constructor(
     public fss: FirestoreService,
