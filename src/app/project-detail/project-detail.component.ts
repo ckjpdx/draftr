@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { ActivatedRoute, Params } from '@angular/router';
 import { FirestoreService } from '../core/firestore.service';
@@ -12,10 +12,12 @@ import { User } from '../core/user.model';
   providers: [FirestoreService]
 })
 export class ProjectDetailComponent implements OnInit {
+
   projects: any;
   projectObservable: any;
   projectToDisplay: any;
   id: string;
+
   limitMembers: number;
 
   constructor(
@@ -47,7 +49,8 @@ export class ProjectDetailComponent implements OnInit {
 //       }
 //     }
 
-  }
+
+ }
 //If spots are available, click SignUp button and runs this function
   // signMeUp(id){
   //   this.user.uid = this.currentProject;

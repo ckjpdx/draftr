@@ -1,0 +1,7 @@
+<!-- Displays Individual Clicked Project-->
+<div class="single-project-display">
+  <h3>Title: <input type="text" [(ngModel)]="selectedProject.title"></h3>
+  <h3>Course: <input type="text" [(ngModel)]="selectedProject.course"></h3>
+  <p>Description: <textarea type="text" [(ngModel)]="selectedProject.description"></textarea> </p>
+  <button (click)="doneEditing()">Confirm</button>
+</div>
