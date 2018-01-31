@@ -1,6 +1,6 @@
 export interface Comment{
     authorName: string;
-    timeStamp: number;
+    timeStamp: string;
     photoUrl: string;
     message: string;
 }
