@@ -5,6 +5,7 @@ import { FirestoreService } from '../core/firestore.service';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import { ClassesService } from '../core/classes.service';
+import { CoursesPipe } from './../core/courses.pipe';
 
 @Component({
   selector: 'app-all-projects',
@@ -16,7 +17,7 @@ export class AllProjectsComponent implements OnInit {
 
     projects: any;
     singleProject: any;
-    selectedClass: string;
+    selectedClass: string = `all`;
     selectedStage: string;
     showAvailable: boolean;
 
