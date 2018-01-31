@@ -5,6 +5,7 @@ import { FirestoreService } from '../core/firestore.service';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import { ClassesService } from '../core/classes.service';
+import { CoursesPipe } from './../core/courses.pipe';
 
 @Component({
   selector: 'app-all-projects',
@@ -19,6 +20,7 @@ export class AllProjectsComponent implements OnInit {
     selectedClass: string;
     selectedStage: string;
     showAvailable: boolean;
+    coursesFilter: string = `all`;
 
   constructor(
     public fss: FirestoreService,
@@ -35,6 +37,9 @@ export class AllProjectsComponent implements OnInit {
     this.fss.getProject(id);
     // console.log(this.singleProject);
     this.router.navigate(['project-detail/', id]);
+  }
+  setCoursesFilter(course){
+    this.coursesFilter = course;
   }
 
 }
