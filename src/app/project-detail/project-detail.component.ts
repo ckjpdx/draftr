@@ -3,6 +3,7 @@ import { Observable } from 'rxjs/Observable';
 import { ActivatedRoute, Params } from '@angular/router';
 import { FirestoreService } from '../core/firestore.service';
 import { Project, ProjectId } from '../core/project.model';
+import { User } from '../core/user.model';
 
 @Component({
   selector: 'app-project-detail',
@@ -15,7 +16,7 @@ export class ProjectDetailComponent implements OnInit {
   projectObservable: any;
   projectToDisplay: any;
   id: string;
-
+  limitMembers: number;
 
   constructor(
     public fss: FirestoreService,
@@ -32,15 +33,23 @@ export class ProjectDetailComponent implements OnInit {
     this.projectObservable.subscribe(project => {
       console.log(project);
       this.projectToDisplay = project;
-      // console.log(projectToDisplay);
     });
 
-  }
+    canJoin() {
+      // console.log(projectToDisplay);
+//       // console.log(projectToDisplay.limitMembers);
+//       // console.log(projectToDisplay.contributors);
+// // pseudo code - if there are contributor spaces available, show SignUp Button, else show indicator that project is full
+//       if (projectToDisplay.contributors.length <= projectToDisplay.limitMembers) {
+//         const signupButton = document.querySelect('.contributors-signup');
+//       } else {
+//         alert("this project is full");
+//       }
+//     }
 
-  canJoin() {
-    if ()
   }
-  canLeave(){
-    if ()
-  }
+//If spots are available, click SignUp button and runs this function
+  // signMeUp(id){
+  //   this.user.uid = this.currentProject;
+  // }
 }
