@@ -39,9 +39,7 @@ export class ProjectDetailComponent implements OnInit {
 
     });
     this.projectObservable = this.fss.getProject(this.id)
-    console.table(this.projectObservable);
     this.projectObservable.subscribe(project => {
-      console.log(project);
       this.projectToDisplay = project;
       this.auth.user.subscribe(user => {
           if (user.uid === this.projectToDisplay.data.authorId) {
@@ -49,14 +47,14 @@ export class ProjectDetailComponent implements OnInit {
           }
           this.photoUrl = user.photoURL;
           //set comments array
-          console.log(this.id);
           this.comments = this.fss.getComments(this.id)
       })
     });
     }
 
     postComment(){
-        const timestamp = moment(Date.now()).format('MMMM Do YYYY, h:mm:ss a');
+        const timestamp = Date.now()
+        const timestamp = moment(timestamp).format('MMMM Do YYYY, h:mm:ss a');
         console.log(timestamp)
         this.fss.addComment(this.id, {message: this.message, authorName: this.fss.authorName, photoUrl: this.photoUrl, timeStamp: timestamp})
     }
