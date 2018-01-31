@@ -5,9 +5,10 @@
   <h3>Course: {{ projectToDisplay.data.course}}</h3>
   <h3>Contributors: {{ projectToDisplay.data.contributors}}</h3>
   <p>Description: {{ projectToDisplay.data.description}}</p>
+  {{projectToDisplay.data.authorId}}
 </div>
 
-<app-edit-project [selectedProject]="projectToDisplay"></app-edit-project>
+<app-edit-project [selectedProject]="projectToDisplay" *ngIf="canEdit"></app-edit-project>
 
 <!--Display for contributor signup-->
 

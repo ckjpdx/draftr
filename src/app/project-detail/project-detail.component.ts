@@ -4,12 +4,13 @@ import { ActivatedRoute, Params } from '@angular/router';
 import { FirestoreService } from '../core/firestore.service';
 import { Project, ProjectId } from '../core/project.model';
 import { User } from '../core/user.model';
+import { AuthService } from '../core/auth.service';
 
 @Component({
   selector: 'app-project-detail',
   templateUrl: './project-detail.component.html',
   styleUrls: ['./project-detail.component.scss'],
-  providers: [FirestoreService]
+  providers: [FirestoreService, AuthService]
 })
 export class ProjectDetailComponent implements OnInit {
 
@@ -17,12 +18,13 @@ export class ProjectDetailComponent implements OnInit {
   projectObservable: any;
   projectToDisplay: any;
   id: string;
-
+  canEdit: boolean;
   limitMembers: number;
 
   constructor(
     public fss: FirestoreService,
-    private route: ActivatedRoute,
+    public route: ActivatedRoute,
+    public auth: AuthService
   ) {}
 
   ngOnInit() {
@@ -35,8 +37,14 @@ export class ProjectDetailComponent implements OnInit {
     this.projectObservable.subscribe(project => {
       console.log(project);
       this.projectToDisplay = project;
+      this.auth.user.subscribe(user => {
+          if (user.uid === this.projectToDisplay.data.authorId) {
+              this.canEdit = true;
+          }
+      })
     });
 
+    }
     // canJoin() {
       // console.log(projectToDisplay);
 //       // console.log(projectToDisplay.limitMembers);
@@ -48,7 +56,7 @@ export class ProjectDetailComponent implements OnInit {
 //         alert("this project is full");
 //       }
     // }
- }
+
 //If spots are available, click SignUp button and runs this function
   // signMeUp(id){
   //   this.user.uid = this.currentProject;
