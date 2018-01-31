@@ -23,6 +23,7 @@ export class ProjectDetailComponent implements OnInit {
   currentUser: any;
   canEdit: boolean;
   canJoin: boolean;
+  canLeave: boolean;
   limitMembers: number;
   comments:any;
   message: string;
@@ -57,6 +58,11 @@ export class ProjectDetailComponent implements OnInit {
           } else {
             this.canJoin = false;
           }
+          if (user.currentProject) {
+            this.canLeave = true;
+          } else {
+            this.canLeave = false;
+          }
       })
     });
   }
@@ -71,14 +77,27 @@ export class ProjectDetailComponent implements OnInit {
 
 //If spots are available, click SignUp button and runs this function
   signMeUp() {
-    if (this.canJoin) {
+    if (this.canJoin && !this.currentUser.currentProject) {
       const newArray: string[] = this.projectToDisplay.data.contributors;
-       newArray.push(this.currentUser.displayName);
-      this.fss.updateContributers(this.id, newArray);
-    } else {
-      alert("yu are not allowed")
+      newArray.push(this.currentUser.displayName);
+      this.fss.updateContributors(this.id, newArray);
+      this.auth.updateCurrentUserProject(this.currentUser, this.projectToDisplay);
+      console.log(this.projectToDisplay)
     }
-
   }
 
+  deleteMe() {
+    if (this.canLeave && this.currentUser.currentProject) {
+      const currentContributorArray: string[] = this.projectToDisplay.data.contributors;
+      const user = this.currentUser.displayName;
+      for(let i of currentContributorArray){
+        if (i === user){
+          let newContributorArray = currentContributorArray.splice(currentContributorArray[i], 1);
+          this.fss.updateContributors(this.id, newContributorArray);
+          this.auth.updateCurrentUserProject(this.currentUser, '');
+          this.canLeave = false;
+        }
+      }
+    }
+  }
 }
