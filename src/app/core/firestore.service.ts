@@ -56,11 +56,24 @@ export class FirestoreService {
   getProject(id){
     this.projectDoc = this.afs.doc('projects/' + id);
     console.log(id);
-    return this.projectDoc.valueChanges();
+    return this.projectDoc.snapshotChanges()
+      .map(actions => {
+          const data = actions.payload.data() as Project;
+          const id = actions.payload.id;
+          console.table({id, data});
+          return {id, data};
+      });
   }
 
-  deletePost(id) {
+  deleteProject(id) {
     console.log(id)
     this.afs.doc('project/' + id).delete();
+  }
+
+  updateProject(id, newProj){
+    this.projectsCollection.doc(id).update({newProj})
+    .then(() => {
+      console.log('updated');
+    })
   }
 }
