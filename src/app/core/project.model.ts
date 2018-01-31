@@ -7,7 +7,6 @@ export interface Project {
   description: string,
   contributors: string[],
   limitMembers: number
-
 }
 
 export interface ProjectId extends Project {

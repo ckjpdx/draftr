@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { ActivatedRoute, Params } from '@angular/router';
 import { FirestoreService } from '../core/firestore.service';
@@ -11,11 +11,11 @@ import { Project, ProjectId } from '../core/project.model';
   providers: [FirestoreService]
 })
 export class ProjectDetailComponent implements OnInit {
+
   projects: any;
   projectObservable: any;
   projectToDisplay: any;
   id: string;
-
 
   constructor(
     public fss: FirestoreService,
@@ -38,9 +38,9 @@ export class ProjectDetailComponent implements OnInit {
   }
 
   canJoin() {
-    if ()
+
   }
   canLeave(){
-    if ()
+
   }
 }
