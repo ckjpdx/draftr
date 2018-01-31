@@ -1,5 +1,5 @@
 <!-- Displays Individual Clicked Project-->
-<div class="single-project-display">
+<div class="single-project-display" *ngIf="projectToDisplay">
   <h3>Title: {{projectToDisplay.data.title}}</h3>
   <h3>Author: {{ projectToDisplay.data.authorName}}</h3>
   <h3>Course: {{ projectToDisplay.data.course}}</h3>

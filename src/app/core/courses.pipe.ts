@@ -9,7 +9,6 @@ import { Project } from './project.model';
 
 export class CoursesPipe implements PipeTransform {
   transform(input: any[], selectedCourse) {
-    console.log(input);
     if (input) {
       const output: any[] = [];
       if (selectedCourse !== `all`){
@@ -18,7 +17,6 @@ export class CoursesPipe implements PipeTransform {
             output.push(input[i]);
           }
         }
-        console.log(output);
         return output;
       } else {
         return input;

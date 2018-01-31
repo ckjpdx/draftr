@@ -36,8 +36,8 @@ export class ProjectDetailComponent implements OnInit {
   ngOnInit() {
     this.route.params.forEach((urlParameters) => {
       this.id = urlParameters['id'];
-
     });
+
     this.projectObservable = this.fss.getProject(this.id)
     this.projectObservable.subscribe(project => {
       this.projectToDisplay = project;
