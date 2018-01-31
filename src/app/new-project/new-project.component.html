@@ -16,10 +16,14 @@
       <div class="modal-body">
         <input type="text" [(ngModel)]="title" placeholder="title"> <br>
         <input type="text" [(ngModel)]="course" placeholder="course"><br>
-        <input type="text" [(ngModel)]="description" placeholder="description">
+        <input type="text" [(ngModel)]="description" placeholder="description"><br>
+        <input type="text" [(ngModel)]="inspiration" placeholder="inpsiration"><br>
+
+
+
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="title = ''; course=''; description=''">Cancel</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="title = ''; course=''; description=''; inspiration=''">Cancel</button>
         <button type="button" class="btn btn-primary"(click)="doAddProject()" data-dismiss="modal">Instantiate!</button>
       </div>
     </div>

@@ -73,9 +73,9 @@ export class ProjectDetailComponent implements OnInit {
 
     postComment(){
         const timestamp = Date.now()
-        const timestamp = moment(timestamp).format('MMMM Do YYYY, h:mm:ss a');
+        const timestampformatted = moment(timestamp).format('MMMM Do YYYY, h:mm:ss a');
         console.log(timestamp)
-        this.fss.addComment(this.id, {message: this.message, authorName: this.fss.authorName, photoUrl: this.photoUrl, timeStamp: timestamp})
+        this.fss.addComment(this.id, {message: this.message, authorName: this.fss.authorName, photoUrl: this.photoUrl, timeStamp: timestamp, timeStampFormatted: timestampformatted})
     }
 
 //If spots are available, click SignUp button and runs this function

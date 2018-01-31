@@ -15,6 +15,8 @@ export class NewProjectComponent implements OnInit {
   title: string;
   course: string;
   description: string;
+  inspiration: string;
+
 
   constructor(private fss: FirestoreService, private auth: AuthService) { }
 //submitForm does not match the project model;
@@ -22,7 +24,7 @@ export class NewProjectComponent implements OnInit {
     // let newProject; need to use fire store to do this;
     //will need a service to send the new project to the list;
   }
- //doAdd
+
   ngOnInit() {
 
   }
@@ -30,6 +32,17 @@ export class NewProjectComponent implements OnInit {
   doAddProject(){
       const timestamp = Date.now();
       const timestampformatted = moment(timestamp).format('MMMM Do YYYY, h:mm:ss a');
-    this.fss.addProject({title: this.title, authorName: this.fss.authorName, authorId: this.fss.authorId, course: this.course, ideaState: true, description: this.description, timeStamp: timestamp, timeStampFormatted: timestampformatted})
+    this.fss.addProject({
+      title: this.title,
+      authorName: this.fss.authorName,
+      authorId: this.fss.authorId,
+      course: this.course,
+      stage: 'idea',
+      description: this.description,
+      timeStamp: timestamp,
+      timeStampFormatted: timestampformatted,
+      inspiration: this.inspiration
+
+    })
   }
 }
