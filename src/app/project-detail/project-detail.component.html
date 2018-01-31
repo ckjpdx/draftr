@@ -11,7 +11,7 @@
 
 <!--Display for contributor signup-->
 <div class="contributors-signup">
-  <button *ngIf="canJoin" type="button" name="button">Signup</button>
+  <button (click)="signMeUp()" *ngIf="canJoin" type="button" name="button">Signup</button>
 </div>
 
 <div class="comments">

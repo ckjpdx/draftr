@@ -83,6 +83,15 @@ export class FirestoreService {
       console.log('updated');
     })
   }
+  //updateContributers(cheese, whiz)
+  updateContributers(id, newArray) {
+    this.projectsCollection.doc(id).update({
+      contributors:newArray.contributor,
+    })
+    .then(() => {
+      console.log('contrib is updated');
+    })
+  }
 
   getComments(id){
       this.commentsCollection = this.projectsCollection.doc(id).collection('comments');
