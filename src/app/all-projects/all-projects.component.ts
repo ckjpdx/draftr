@@ -17,10 +17,9 @@ export class AllProjectsComponent implements OnInit {
 
     projects: any;
     singleProject: any;
-    selectedClass: string;
+    selectedClass: string = `all`;
     selectedStage: string;
     showAvailable: boolean;
-    coursesFilter: string = `all`;
 
   constructor(
     public fss: FirestoreService,
@@ -37,9 +36,6 @@ export class AllProjectsComponent implements OnInit {
     this.fss.getProject(id);
     // console.log(this.singleProject);
     this.router.navigate(['project-detail/', id]);
-  }
-  setCoursesFilter(course){
-    this.coursesFilter = course;
   }
 
 }

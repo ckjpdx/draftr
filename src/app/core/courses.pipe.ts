@@ -8,13 +8,21 @@ import { Project } from './project.model';
 })
 
 export class CoursesPipe implements PipeTransform {
-  transform(input: Project[], selectedCourse: string){
-    let output: Project[] = [];
-    for (let i = 0; i < input.length; i++) {
-      if (input[i].course === selectedCourse || selectedCourse === ``) {
-        output.push(input[i]);
+  transform(input: any[], selectedCourse) {
+    console.log(input);
+    if (input) {
+      const output: any[] = [];
+      if (selectedCourse !== `all`){
+        for (let i = 0; i < input.length; i++) {
+          if (input[i].data.course === selectedCourse) {
+            output.push(input[i]);
+          }
+        }
+        console.log(output);
+        return output;
+      } else {
+        return input;
       }
     }
-    return output;
   }
 }

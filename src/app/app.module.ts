@@ -19,6 +19,7 @@ import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { ModalModule } from 'ngx-bootstrap/modal';
 
 import { EditProjectComponent } from './edit-project/edit-project.component';
+import { CoursesPipe } from './core/courses.pipe';
 
 var firebaseConfig = {
   apiKey: "AIzaSyAxMjMn9totpu8iUM55JPOzKnAq7xXGYks",
@@ -35,8 +36,9 @@ var firebaseConfig = {
     AllProjectsComponent,
     ProjectDetailComponent,
     LoginComponent,
-      NewProjectComponent,
-      EditProjectComponent
+    NewProjectComponent,
+    EditProjectComponent,
+    CoursesPipe
   ],
   imports: [
     BrowserModule,
