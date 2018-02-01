@@ -3,15 +3,21 @@
   <h1>{{user.displayName}}</h1>
   <h3>{{user.email}}</h3>
   <img src="{{user.photoURL}}" alt="user's profile">
-  <h2>Projects</h2>
+  <h2>Current Project: </h2>
   <ul>
     <li *ngFor="let listItem of projectList">
       {{listItem}}
     </li>
   </ul>
-  <h2>Ideas</h2>
+  <h2>Ideas: </h2>
   <ul>
-    <li *ngFor="let listItem of ideaList">
+    <li (click)="getThisProject(project.id)" *ngFor="let listItem of ideaList">
+      {{listItem}}
+    </li>
+  </ul>
+  <h2>Completed Projects: </h2>
+  <ul>
+    <li *ngFor="let listItem of completedList">
       {{listItem}}
     </li>
   </ul>
