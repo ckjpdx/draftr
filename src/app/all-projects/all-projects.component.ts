@@ -18,7 +18,7 @@ export class AllProjectsComponent implements OnInit {
     projects: any;
     singleProject: any;
     selectedClass: string = `all`;
-    selectedStage: string;
+    selectedStage: string = 'all';
     showAvailable: boolean;
 
   constructor(

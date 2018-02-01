@@ -24,11 +24,11 @@ export class ProfileComponent implements OnInit {
       this.myProjects = this.myProjectsCollection.valueChanges();
       this.myProjects.subscribe(projects => {
           console.table(projects)
-        projects.forEach((cheeseProject) => {
-          if (cheeseProject.stage === 'active'){
-            this.projectList.push(cheeseProject.title);
-          } else if (cheeseProject.stage === 'idea') {
-            this.ideaList.push(cheeseProject.title);
+        projects.forEach((project) => {
+          if (project.stage === 'active'){
+            this.projectList.push(project.title);
+        } else if (project.stage === 'idea') {
+            this.ideaList.push(project.title);
           }
           //else completed project
         });

@@ -67,9 +67,14 @@ export class FirestoreService {
       });
   }
 
-  deleteProject(id) {
-    this.afs.doc('projects/' + id).delete();
-    this.router.navigate(['/']);
+  deleteProject(project) {
+      if (!project.contributors.length) {
+          this.afs.doc('projects/' + project.id).delete();
+          this.router.navigate(['/']);
+      } else {
+          alert("Sorry, this project has people in it, you must convince them to leave before deleting it. You may also remove people in the edit function")
+      }
+
   }
 
   updateProject(id, newProj){

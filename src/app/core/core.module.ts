@@ -6,11 +6,13 @@ import { ClassesService } from './classes.service';
 
 import { AuthGuard } from './authguard.service';
 
+
 @NgModule({
   imports: [
     AngularFireAuthModule,
     AngularFirestoreModule
   ],
-  providers: [AuthService, ClassesService, AuthGuard]
+  providers: [AuthService, ClassesService, AuthGuard],
+  declarations: []
 })
 export class CoreModule { }

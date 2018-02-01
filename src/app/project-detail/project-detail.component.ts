@@ -99,7 +99,6 @@ export class ProjectDetailComponent implements OnInit {
      }
      console.log(ContributorArray)
      if (!ContributorArray.length) {
-         console.log("this")
          this.fss.changeStage(this.id, 'idea');
      }
    }

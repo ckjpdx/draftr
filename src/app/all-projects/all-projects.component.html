@@ -28,7 +28,7 @@
 </div>
 <div class="page-content container">
     <div class="project-list">
-        <div *ngFor="let project of projects | async | courses: selectedClass" class="project-box"  [class.open-project]="!project.data.contributors">
+        <div *ngFor="let project of projects | async | courses: selectedClass | stage: selectedStage" class="project-box"  [class.open-project]="!project.data.contributors">
             <h3 class="title">{{ project.data.title }}</h3>
             <div class="detail">
                 <div class="meta-box">
