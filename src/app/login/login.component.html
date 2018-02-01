@@ -1,5 +1,7 @@
-<div *ngIf="auth.user | async; then authenticated; else guest"></div>
 
+
+
+<div *ngIf="auth.user | async; then authenticated; else guest"></div>
 
 <ng-template #guest>
     <div class="home-box">
@@ -19,5 +21,7 @@
 </ng-template>
 
 <ng-template #authenticated>
-    <app-profile></app-profile>
+  <div class="home-box">
+    <app-intro-page></app-intro-page>
+  </div>
 </ng-template>
