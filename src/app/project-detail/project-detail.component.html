@@ -5,46 +5,46 @@
     </div>
     <div class="bar-content">
         <span>Brainchild of: {{ projectToDisplay.data.authorName}} straight outta {{ projectToDisplay.data.course }}</span>
+        <app-edit-project [selectedProject]="projectToDisplay" *ngIf="canEdit && projectToDisplay.data.stage !== 'complete'"></app-edit-project>
+        <button (click)="signMeUp()" *ngIf="canJoin" class="btn" name="button">Join This Project</button>
+        <button (click)="deleteMe()" *ngIf="canLeave" type="button" name="button">Leave this mess. Noodle out.</button>
+        <button type="button" name="button" *ngIf="canEdit && projectToDisplay.data.stage !== 'complete'" (click)="fss.deleteProject(projectToDisplay)">Delete</button>
+        <button (click)="completeMe()" *ngIf="canEdit && projectToDisplay.data.stage === 'active'" type="button" name="button">Mark as complete</button>
     </div>
 </div>
-<div class="single-project-display" *ngIf="projectToDisplay">
-    <h3>Course: {{ projectToDisplay.data.course}}</h3>
+<div class="container">
+    <div class="single-project-display" *ngIf="projectToDisplay">
 
-    <h3>Contributors</h3>
-        <div class="" *ngFor="let member of projectToDisplay.data.contributors">
-           --- {{ member.name }}
+        <h3 class="text-center">Contributors to this project</h3>
+        <div class="meta-box">
+            <p *ngIf="!projectToDisplay.data.contributors">Nobody is here yet! if you are not already part of a project and you like this, Join the project by clicking the join button.<br> The project will then become active</p>
+            <div class="" *ngFor="let member of projectToDisplay.data.contributors">
+                <div class="member-meta text center">
+                    <h4> <img src="{{member.photoURL}}" width="60" alt=""> {{ member.name }}</h4>
+                </div>
+            </div>
         </div>
-    <p>Description: {{ projectToDisplay.data.description }}</p>
-    <p>inspiration: <a href="{{projectToDisplay.data.inspiration}}" target="_blank">{{projectToDisplay.data.inspiration}}</a></p>
+        <h3 class="text-center">Project Description</h3>
+        <div class="meta-box">
+            <p>{{ projectToDisplay.data.description }}</p>
+        </div>
+        <h3 class="text-center">Inspirational link</h3>
+        <div class="meta-box">
+            <p><a href="{{projectToDisplay.data.inspiration}}" target="_blank">{{projectToDisplay.data.inspiration}}</a></p>
+        </div>
 
-</div>
-
-<app-edit-project [selectedProject]="projectToDisplay" *ngIf="canEdit && projectToDisplay.data.stage !== 'complete'"></app-edit-project>
-
-<!--Display for contributor signup-->
-<div class="contributors-signup" *ngIf="projectToDisplay.data.stage !== 'complete'">
-  <button (click)="signMeUp()" *ngIf="canJoin" type="button" name="button">Signup</button>
-</div>
-
-<!--Display for group member/contributor to leave group-->
-<div class="contributors-delete">
-  <button (click)="deleteMe()" *ngIf="canLeave" type="button" name="button">Leave this mess. Noodle out.</button>
-</div>
-
-<!--Author can archive/mark project as complete-->
-<div class="author-tag-complete">
-  <button (click)="completeMe()" *ngIf="canEdit && projectToDisplay.data.stage === 'active'" type="button" name="button">Mark as complete</button>
-</div>
-
-<button type="button" name="button" *ngIf="canEdit && projectToDisplay.data.stage !== 'complete'" (click)="fss.deleteProject(projectToDisplay)">Delete</button>
-
-<div class="comments">
-    <h3>comments</h3>
-    <div *ngFor="let comment of comments | async" >
-        {{comment.message}}<br>
-        <img src="{{comment.photoUrl}}" alt="" width="50px"><br>
-        {{comment.timeStamp}}<br>
-        {{comment.authorName}}<br>
+        <h3 class="text-center">"Im just here for the comments"</h3>
+        <div class="comments meta-box">
+            <div class="card card-inverse" style="background-color: #333; border-color: #333;" *ngFor="let comment of comments | async">
+              <div class="card-header">
+                <span><img src="{{comment.photoUrl}}" alt="" width="50px">  {{comment.authorName}}</span>
+                <span>{{comment.timeStampFormatted}}</span>
+              </div>
+              <div class="card-block">
+                <p class="card-text">{{comment.message}}</p>
+              </div>
+            </div>
+        </div>
     </div>
 </div>
 
