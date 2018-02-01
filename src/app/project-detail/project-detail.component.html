@@ -4,7 +4,8 @@
   <h3>Author: {{ projectToDisplay.data.authorName}}</h3>
   <h3>Course: {{ projectToDisplay.data.course}}</h3>
   <h3>Contributors: {{ projectToDisplay.data.contributors}}</h3>
-  <p>Description: {{ projectToDisplay.data.description}}</p>
+  <p>Description: {{ projectToDisplay.data.description }}</p>
+  <p>inspiration: {{projectToDisplay.data.inspiration }}</p>
 </div>
 
 <app-edit-project [selectedProject]="projectToDisplay" *ngIf="canEdit"></app-edit-project>
@@ -22,7 +23,7 @@
 
 <div class="comments">
     <h3>comments</h3>
-    <div *ngFor="let comment of comments | async">
+    <div *ngFor="let comment of comments | async" >
         {{comment.message}}<br>
         <img src="{{comment.photoUrl}}" alt="" width="50px"><br>
         {{comment.timeStamp}}<br>

@@ -56,6 +56,16 @@ export class ProjectDetailComponent implements OnInit {
         const timestamp = Date.now()
         const timestampformatted = moment(timestamp).format('MMMM Do YYYY, h:mm:ss a');
         console.log(timestamp)
-        this.fss.addComment(this.id, {message: this.message, authorName: this.fss.authorName, photoUrl: this.photoUrl, timeStamp: timestamp, timeStampFormatted:timestampformatted})
+        this.fss.addComment(this.id, {message: this.message, authorName: this.fss.authorName, photoUrl: this.photoUrl, timeStamp: timestamp, timeStampFormatted: timestampformatted})
+    }
+
+//If spots are available, click SignUp button and runs this function
+  signMeUp() {
+    if (this.canJoin && !this.currentUser.currentProject) {
+      const newArray: string[] = this.projectToDisplay.data.contributors;
+      newArray.push(this.currentUser.displayName);
+      this.fss.updateContributors(this.id, newArray);
+      this.auth.updateCurrentUserProject(this.currentUser, this.projectToDisplay);
+      console.log(this.projectToDisplay)
     }
 }

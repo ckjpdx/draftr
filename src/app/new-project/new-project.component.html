@@ -16,11 +16,16 @@
       <div class="modal-body">
         <input type="text" [(ngModel)]="title" placeholder="title"> <br>
         <input type="text" [(ngModel)]="course" placeholder="course"><br>
-        <input type="text" [(ngModel)]="description" placeholder="description">
+        <input type="text" [(ngModel)]="description" placeholder="description"><br>
+        <input type="text" [(ngModel)]="inspiration" placeholder="inpsiration"><br>
+        <input type="text" [(ngModel)]="limitMembers" type="number" placeholder="contributor limit"><br>
+
+
+
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="title = ''; course=''; description=''">Cancel</button>
-        <button type="button" class="btn btn-primary"(click)="doAddProject()" data-dismiss="modal">Instantiate!</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="title = ''; course=''; description=''; inspiration=''; limitMembers=''">Cancel</button>
+        <button type="button" class="btn btn-primary" (click)="doAddProject()" data-dismiss="modal">Instantiate!</button>
       </div>
     </div>
   </div>
