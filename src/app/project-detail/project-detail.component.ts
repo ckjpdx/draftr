@@ -58,7 +58,7 @@ export class ProjectDetailComponent implements OnInit {
           } else {
             this.canJoin = false;
           }
-          if (user.currentProject) {
+          if (user.currentProject === this.id) {
             this.canLeave = true;
           } else {
             this.canLeave = false;
@@ -80,7 +80,7 @@ export class ProjectDetailComponent implements OnInit {
      const newArray: any[] = this.projectToDisplay.data.contributors;
      newArray.push({
          name: this.currentUser.displayName,
-         id: this.currentUser.uid,
+         uid: this.currentUser.uid,
          photoURL: this.currentUser.photoURL
      });
      this.fss.updateContributors(this.id, newArray);
@@ -91,17 +91,17 @@ export class ProjectDetailComponent implements OnInit {
 
  deleteMe(id?) {
  if (this.canLeave && this.currentUser.currentProject) {
-         const ContributorArray: any[] = this.projectToDisplay.data.contributors;
+         const contributorArray: any[] = this.projectToDisplay.data.contributors;
          const user = this.currentUser.uid;
-         for(let i of ContributorArray){
-           if (i.id === user){
-             ContributorArray.splice(ContributorArray[i], 1);
-             this.fss.updateContributors(this.id, ContributorArray);
+         for(let i of contributorArray){
+           if (i.uid === user){
+             contributorArray.splice(i, 1);
+             this.fss.updateContributors(this.id, contributorArray);
              this.auth.updateCurrentUserProject(this.currentUser, '');
              this.canLeave = false;
            }
          }
-         if (!ContributorArray.length) {
+         if (!contributorArray.length) {
              this.fss.changeStage(this.id, 'idea');
          }
    }
@@ -110,6 +110,10 @@ export class ProjectDetailComponent implements OnInit {
  completeMe() {
    if (this.projectToDisplay.data.stage === 'active'){
      this.fss.changeStage(this.id, 'complete');
+     const contributorArray: any[] = this.projectToDisplay.data.contributors;
+     for(let contributor of contributorArray){
+       this.auth.updateCurrentUserProject(contributor, '');
+     }
    }
  }
 }

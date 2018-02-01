@@ -66,6 +66,7 @@ export class AuthService {
 
   public updateCurrentUserProject(user, project) {
     // Sets user data to firestore on login
+    console.log(user)
     const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.uid}`);
     if(project){
       return userRef.update({currentProject: project.id})
