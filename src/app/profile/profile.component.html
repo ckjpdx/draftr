@@ -1,18 +1,29 @@
-<div *ngIf="auth.user | async as user">
-  <h1>Profile:</h1>
-  <h1>{{user.displayName}}</h1>
-  <h3>{{user.email}}</h3>
-  <img src="{{user.photoURL}}" alt="user's profile">
-  <h2>Projects</h2>
-  <ul>
-    <li *ngFor="let listItem of projectList">
-      {{listItem}}
-    </li>
-  </ul>
-  <h2>Ideas</h2>
-  <ul>
-    <li *ngFor="let listItem of ideaList">
-      {{listItem}}
-    </li>
-  </ul>
+<div *ngIf="projectsReadable">
+  <div *ngIf="auth.user | async as user">
+    <h1>Profile:</h1>
+    <h1>{{user.displayName}}</h1>
+    <h3>{{user.email}}</h3>
+    <img src="{{user.photoURL}}" alt="user's profile">
+    <h2>Current Project: </h2>
+    <ul>
+      <li *ngFor="let project of projectList">
+        {{project.data.title}}
+        <button (click)="getThisProject(project.id)" type="button">go to detail</button>
+      </li>
+    </ul>
+    <h2>Ideas: </h2>
+    <ul>
+      <li *ngFor="let project of ideaList">
+        {{project.data.title}}
+        <button (click)="getThisProject(project.id)" type="button">go to detail</button>
+      </li>
+    </ul>
+    <h2>Completed Projects: </h2>
+    <ul>
+      <li *ngFor="let project of completedList">
+        {{project.data.title}}
+        <button (click)="getThisProject(project.id)" type="button">go to detail</button>
+      </li>
+    </ul>
+  </div>
 </div>

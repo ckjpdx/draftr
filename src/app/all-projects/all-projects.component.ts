@@ -18,7 +18,7 @@ export class AllProjectsComponent implements OnInit {
     projects: any;
     singleProject: any;
     selectedClass: string = `all`;
-    selectedStage: string = 'all';
+    selectedStage: string = `all`;
     showAvailable: boolean;
 
   constructor(
@@ -34,7 +34,6 @@ export class AllProjectsComponent implements OnInit {
 
   getSingleProject(id) {
     this.fss.getProject(id);
-    // console.log(this.singleProject);
     this.router.navigate(['project-detail/', id]);
   }
 

@@ -15,22 +15,28 @@
            --- {{ member.name }}
         </div>
     <p>Description: {{ projectToDisplay.data.description }}</p>
-    <p>inspiration: {{projectToDisplay.data.inspiration }}</p>
+    <p>inspiration: <a href="{{projectToDisplay.data.inspiration}}" target="_blank">{{projectToDisplay.data.inspiration}}</a></p>
 
 </div>
 
-<app-edit-project [selectedProject]="projectToDisplay" *ngIf="canEdit"></app-edit-project>
+<app-edit-project [selectedProject]="projectToDisplay" *ngIf="canEdit && projectToDisplay.data.stage !== 'complete'"></app-edit-project>
 
 <!--Display for contributor signup-->
-<div class="contributors-signup">
+<div class="contributors-signup" *ngIf="projectToDisplay.data.stage !== 'complete'">
   <button (click)="signMeUp()" *ngIf="canJoin" type="button" name="button">Signup</button>
 </div>
 
+<!--Display for group member/contributor to leave group-->
 <div class="contributors-delete">
   <button (click)="deleteMe()" *ngIf="canLeave" type="button" name="button">Leave this mess. Noodle out.</button>
 </div>
 
-<button type="button" name="button" *ngIf="canEdit" (click)="fss.deleteProject(projectToDisplay)">Delete</button>
+<!--Author can archive/mark project as complete-->
+<div class="author-tag-complete">
+  <button (click)="completeMe()" *ngIf="canEdit && projectToDisplay.data.stage === 'active'" type="button" name="button">Mark as complete</button>
+</div>
+
+<button type="button" name="button" *ngIf="canEdit && projectToDisplay.data.stage !== 'complete'" (click)="fss.deleteProject(projectToDisplay)">Delete</button>
 
 <div class="comments">
     <h3>comments</h3>
