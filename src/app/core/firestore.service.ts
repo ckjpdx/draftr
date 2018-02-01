@@ -72,7 +72,7 @@ export class FirestoreService {
           this.afs.doc('projects/' + project.id).delete();
           this.router.navigate(['projects']);
       } else {
-          alert("Sorry, this project has people in it, you must convince them to leave before deleting it. You may also remove people in the edit function")
+          alert("Sorry, this project has people in it, you must convince them to leave before deleting it. oh, You may also remove people in the edit function")
       }
 
   }

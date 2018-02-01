@@ -1,11 +1,16 @@
 <!-- Displays Individual Clicked Project-->
 <div class="single-project-display" *ngIf="projectToDisplay">
-  <h3>Title: {{projectToDisplay.data.title}}</h3>
-  <h3>Author: {{ projectToDisplay.data.authorName}}</h3>
-  <h3>Course: {{ projectToDisplay.data.course}}</h3>
-  <h3>Contributors: {{ projectToDisplay.data.contributors}}</h3>
-  <p>Description: {{ projectToDisplay.data.description }}</p>
-  <p>inspiration: {{projectToDisplay.data.inspiration }}</p>
+    <h3>Title: {{projectToDisplay.data.title}}</h3>
+    <h3>Author: {{ projectToDisplay.data.authorName}}</h3>
+    <h3>Course: {{ projectToDisplay.data.course}}</h3>
+
+    <h3>Contributors</h3>
+        <div class="" *ngFor="let member of projectToDisplay.data.contributors">
+           --- {{ member.name }}
+        </div>
+    <p>Description: {{ projectToDisplay.data.description }}</p>
+    <p>inspiration: {{projectToDisplay.data.inspiration }}</p>
+
 </div>
 
 <app-edit-project [selectedProject]="projectToDisplay" *ngIf="canEdit"></app-edit-project>

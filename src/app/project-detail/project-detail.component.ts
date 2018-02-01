@@ -77,30 +77,33 @@ export class ProjectDetailComponent implements OnInit {
 //If spots are available, click SignUp button and runs this function
  signMeUp() {
    if (this.canJoin && !this.currentUser.currentProject) {
-     const newArray: string[] = this.projectToDisplay.data.contributors;
-     newArray.push(this.currentUser.displayName);
+     const newArray: any[] = this.projectToDisplay.data.contributors;
+     newArray.push({
+         name: this.currentUser.displayName,
+         id: this.currentUser.uid,
+         photoURL: this.currentUser.photoURL
+     });
      this.fss.updateContributors(this.id, newArray);
      this.auth.updateCurrentUserProject(this.currentUser, this.projectToDisplay);
      this.fss.changeStage(this.id, 'active');
    }
  }
 
- deleteMe() {
-   if (this.canLeave && this.currentUser.currentProject) {
-     const ContributorArray: string[] = this.projectToDisplay.data.contributors;
-     const user = this.currentUser.displayName;
-     for(let i of ContributorArray){
-       if (i === user){
-         ContributorArray.splice(ContributorArray[i], 1);
-         this.fss.updateContributors(this.id, ContributorArray);
-         this.auth.updateCurrentUserProject(this.currentUser, '');
-         this.canLeave = false;
-       }
-     }
-     console.log(ContributorArray)
-     if (!ContributorArray.length) {
-         this.fss.changeStage(this.id, 'idea');
-     }
+ deleteMe(id?) {
+ if (this.canLeave && this.currentUser.currentProject) {
+         const ContributorArray: any[] = this.projectToDisplay.data.contributors;
+         const user = this.currentUser.uid;
+         for(let i of ContributorArray){
+           if (i.id === user){
+             ContributorArray.splice(ContributorArray[i], 1);
+             this.fss.updateContributors(this.id, ContributorArray);
+             this.auth.updateCurrentUserProject(this.currentUser, '');
+             this.canLeave = false;
+           }
+         }
+         if (!ContributorArray.length) {
+             this.fss.changeStage(this.id, 'idea');
+         }
    }
  }
 }

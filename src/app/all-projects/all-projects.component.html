@@ -41,8 +41,10 @@
                     <div class="meta-title">
                         contributors
                     </div>
-                    <span *ngFor="let member of project.data.contributors; let isLast=last">{{ member }}{{isLast ? '' : ', '}}</span>
-                    <span *ngIf="!project.data.contributors">open Project</span>
+                    <div *ngFor="let member of project.data.contributors" class="member">
+                        <img src="{{member.photoURL}}" width="35px" alt="">  {{ member.name }}
+                    </div>
+                    <span *ngIf="!project.data.contributors">none</span>
 
                 </div>
             </div>

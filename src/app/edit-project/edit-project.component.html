@@ -1,4 +1,5 @@
 
+
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editModal">
   Edit This Project
 </button>
@@ -20,6 +21,13 @@
                 </select>
           Description: <textarea type="text" [(ngModel)]="selectedProject.data.description"></textarea>
           inspiration: <textarea type="text" [(ngModel)]="selectedProject.data.inspiration"></textarea>
+
+          <div class="form-group">
+              <h3>Contributors</h3>
+              <div class="contributor" *ngFor="let member of selectedProject.data.contributors; let i=index">
+                  {{member.name}} <span class="clickable" (click)="adminRemoveUser(member.id)"> boot</span>
+              </div>
+          </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
