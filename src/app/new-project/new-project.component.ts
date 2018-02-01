@@ -46,7 +46,6 @@ export class NewProjectComponent implements OnInit {
       inspiration: this.inspiration,
       contributors: [],
       limitMembers: this.limitMembers ? parseInt(this.limitMembers) : 3
-
     })
   }
 }
