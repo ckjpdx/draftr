@@ -23,6 +23,7 @@ import { CoursesPipe } from './core/courses.pipe';
 import { StagePipe } from './core/stage.pipe';
 import { AvailablityPipe } from './core/availablity.pipe';
 import { LogoutComponent } from './logout/logout.component';
+import { IntroPageComponent } from './intro-page/intro-page.component';
 
 
 var firebaseConfig = {
@@ -45,7 +46,8 @@ var firebaseConfig = {
     CoursesPipe,
     StagePipe,
     AvailablityPipe,
-    LogoutComponent
+    LogoutComponent,
+    IntroPageComponent
   ],
   imports: [
     BrowserModule,
