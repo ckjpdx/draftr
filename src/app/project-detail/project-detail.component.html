@@ -27,7 +27,7 @@
 
 <!--Author can archive/mark project as complete-->
 <div class="author-tag-complete">
-  <button (click)="completeMe()" *ngIf="canEdit" type="button" name="button">Mark as complete</button>
+  <button (click)="completeMe()" *ngIf="canEdit && projectToDisplay.data.stage === 'active'" type="button" name="button">Mark as complete</button>
 </div>
 
 <button type="button" name="button" *ngIf="canEdit" (click)="fss.deleteProject(projectToDisplay)">Delete</button>

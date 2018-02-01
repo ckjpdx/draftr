@@ -108,7 +108,6 @@ export class ProjectDetailComponent implements OnInit {
  }
 //Author can tag project as complete
  completeMe() {
-   alert('completeMe runs');
    if (this.projectToDisplay.data.stage === 'active'){
      this.fss.changeStage(this.id, 'complete');
    }

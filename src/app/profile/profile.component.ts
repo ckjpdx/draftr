@@ -17,6 +17,7 @@ export class ProfileComponent implements OnInit {
   projectList: string[] = [];
   ideaList: string[] = [];
   completedList: string[] = [];
+  projectsReadable: any[];
   singleProject: any;
 
   constructor(
@@ -29,16 +30,24 @@ export class ProfileComponent implements OnInit {
   ngOnInit() {
     this.auth.user.subscribe(user => {
       this.myProjectsCollection = this.afs.collection('projects', ref => ref.where('authorId', '==', `${user.uid}`));
-      this.myProjects = this.myProjectsCollection.valueChanges();
+      this.myProjects = this.myProjectsCollection.snapshotChanges()
+        .map(actions => {
+          return actions.map(a =>{
+            const data = a.payload.doc.data() as Project;
+            const id = a.payload.doc.id;
+            return {id, data};
+          });
+        });
       this.myProjects.subscribe(projects => {
+        this.projectsReadable = projects;
           console.table(projects)
         projects.forEach((project) => {
-          if (project.stage === 'active'){
-            this.projectList.push(project.title);
-        } else if (project.stage === 'idea') {
-            this.ideaList.push(project.title);
+          if (project.data.stage === 'active'){
+            this.projectList.push(project);
+        } else if (project.data.stage === 'idea') {
+            this.ideaList.push(project);
         } else {
-            this.completedList.push(project.title);
+            this.completedList.push(project);
           }
         });
       });
@@ -47,8 +56,7 @@ export class ProfileComponent implements OnInit {
 
   getThisProject(id){
     this.fss.getProject(id);
-    // console.log(this.singleProject);
+    console.log(id);
     this.router.navigate(['project-detail/', id]);
-
   }
 }
