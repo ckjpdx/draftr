@@ -23,12 +23,13 @@ export class ProfileComponent implements OnInit {
       this.myProjectsCollection = this.afs.collection('projects', ref => ref.where('authorId', '==', `${author.uid}`));
       this.myProjects = this.myProjectsCollection.valueChanges();
       this.myProjects.subscribe((projects) => {
-        projects.forEach((thisProject) => {
-          if (thisProject.ideaState === false){
-            this.projectList.push(thisProject.title);
-          } else {
-            this.ideaList.push(thisProject.title);
+        projects.forEach((cheeseProject) => {
+          if (cheeseProject.stage === 'active project'){
+            this.projectList.push(cheeseProject.title);
+          } else if (cheeseProject.stage === 'idea') {
+            this.ideaList.push(cheeseProject.title);
           }
+          //else completed project
         });
       });
     });

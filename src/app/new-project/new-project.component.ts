@@ -16,6 +16,7 @@ export class NewProjectComponent implements OnInit {
   course: string;
   description: string;
   inspiration: string;
+  limitMembers: number;
 
 
   constructor(private fss: FirestoreService, private auth: AuthService) { }
@@ -41,7 +42,9 @@ export class NewProjectComponent implements OnInit {
       description: this.description,
       timeStamp: timestamp,
       timeStampFormatted: timestampformatted,
-      inspiration: this.inspiration
+      inspiration: this.inspiration,
+      contributors: [],
+      limitMembers: this.limitMembers ? this.limitMembers: 3
 
     })
   }
