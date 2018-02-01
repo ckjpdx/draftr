@@ -24,7 +24,7 @@ export class FirestoreService {
   commentsCollection: AngularFirestoreCollection < Comment >
 
   constructor(private afs: AngularFirestore, private auth: AuthService, private router: Router) {
-    this.projectsCollection = this.afs.collection('projects');
+    this.projectsCollection = this.afs.collection('projects', ref => ref.orderBy('timeStamp'));
     // , ref => ref.orderBy('timeStamp')
     this.projects = this.projectsCollection.snapshotChanges()
       .map(actions => {

@@ -15,7 +15,7 @@ export class AuthService {
   authState: any = null;
 
   constructor(private afAuth: AngularFireAuth, private afs: AngularFirestore, private router: Router) {
-    this.afAuth.authState.subscribe((auth) => {
+    this.afAuth.authState.subscribe((auth) => { //returns true if logged in
         this.authState = auth;
     });
 
@@ -46,14 +46,19 @@ export class AuthService {
 		});
   }
 
-  googleLogin() { //this function is activated when google login is selected and sends the google auth provider into the oAuth function
+  googleLogin() {
     const provider = new firebase.auth.GoogleAuthProvider()
     return this.oAuthLogin(provider);
   }
 
+  githubLogin() {
+    const provider = new firebase.auth.GithubAuthProvider();
+    return this.oAuthLogin(provider);
+  }
 
-  private oAuthLogin(provider) { //this function can be used to log in with many providers by creating other login methods which send the provider into this parameter
-    return this.afAuth.auth.signInWithPopup(provider) //the successful sign in returns an object containing the user data which will be sent into "credential" parameter after it is received
+
+  private oAuthLogin(provider) {
+    return this.afAuth.auth.signInWithPopup(provider)
       .then((credential) => {
         this.updateUserData(credential.user)
       })
@@ -72,7 +77,6 @@ export class AuthService {
 
   public updateUserData(user) {
     // Sets user data to firestore on login
-
     const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.uid}`);
     const data: User = {
       uid: user.uid,
