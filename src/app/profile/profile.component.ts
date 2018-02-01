@@ -19,12 +19,13 @@ export class ProfileComponent implements OnInit {
   constructor(public auth: AuthService, public fss: FirestoreService, public afs: AngularFirestore) { }
 
   ngOnInit() {
-    this.auth.user.subscribe(author => {
-      this.myProjectsCollection = this.afs.collection('projects', ref => ref.where('authorId', '==', `${author.uid}`));
+    this.auth.user.subscribe(user => {
+      this.myProjectsCollection = this.afs.collection('projects', ref => ref.where('authorId', '==', `${user.uid}`));
       this.myProjects = this.myProjectsCollection.valueChanges();
-      this.myProjects.subscribe((projects) => {
+      this.myProjects.subscribe(projects => {
+          console.table(projects)
         projects.forEach((cheeseProject) => {
-          if (cheeseProject.stage === 'active project'){
+          if (cheeseProject.stage === 'active'){
             this.projectList.push(cheeseProject.title);
           } else if (cheeseProject.stage === 'idea') {
             this.ideaList.push(cheeseProject.title);
