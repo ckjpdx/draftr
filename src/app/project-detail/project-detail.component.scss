@@ -1,0 +1,59 @@
+.card-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+p.card-text {
+    padding: 30px;
+}
+
+.meta-box {
+    padding: 30px;
+}
+
+.card {
+    box-shadow: 0 0 12px 1px rgba(0,0,0,.82);
+    border: 1px solid #000!important;
+}
+
+.card span:first-child {
+    font-size: 1.5em;
+    display: flex;
+    align-items: center;
+}
+
+.card-header img {
+    margin-right: 15px;
+}
+
+.meta-box {
+    margin-bottom: 50px;
+}
+
+h3 {
+    background: #181a23;
+    margin-bottom: 0;
+    padding: 10px;
+    font-weight: bold;
+}
+
+.comments.meta-box {
+    display: grid;
+    grid-gap: 30px;
+}
+
+.single-project-display {
+    margin-top: 80px;
+}
+
+.contributors {display: flex;justify-content: space-around;align-items: center;}
+
+h4 {
+    background: #ffffff26;
+    display: inline-block;
+    padding-right: 20px;
+}
+
+h4 img {
+    margin-right: 15px;
+}
