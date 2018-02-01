@@ -10,7 +10,10 @@
         </div>
     <p>Description: {{ projectToDisplay.data.description }}</p>
     <p>inspiration: <a href="{{projectToDisplay.data.inspiration}}" target="_blank">{{projectToDisplay.data.inspiration}}</a></p>
-
+    <div *ngIf="projectToDisplay.data.likes">
+      <p>Likes: {{ projectToDisplay.data.likes.length }}</p>
+      <button (click)="likeThisProject()">Like</button>
+    </div>
 </div>
 
 <app-edit-project [selectedProject]="projectToDisplay" *ngIf="canEdit && projectToDisplay.data.stage !== 'complete'"></app-edit-project>

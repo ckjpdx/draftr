@@ -107,7 +107,7 @@ export class ProjectDetailComponent implements OnInit {
    }
  }
 //Author can tag project as complete
- completeMe() {
+  completeMe() {
    if (this.projectToDisplay.data.stage === 'active'){
      this.fss.changeStage(this.id, 'complete');
      const contributorArray: any[] = this.projectToDisplay.data.contributors;
@@ -115,5 +115,22 @@ export class ProjectDetailComponent implements OnInit {
        this.auth.updateCurrentUserProject(contributor, '');
      }
    }
- }
+}
+  likeThisProject(){
+    let isLiked = false;
+    let indexToDelete = 0;
+    let likesArray = this.projectToDisplay.data.likes;
+    for (let i = 0; i < likesArray.length; i++){
+      if (likesArray[i] === this.currentUser.uid){
+        isLiked = true;
+        indexToDelete = i;
+      }
+    }
+    if (isLiked) {
+      likesArray.splice(indexToDelete, 1); // then unlike
+    } else {
+      likesArray.push(this.currentUser.uid); // then like
+    }
+    this.fss.updateLikes(this.id, likesArray);
+  }
 }
