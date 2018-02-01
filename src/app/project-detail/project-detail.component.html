@@ -19,7 +19,7 @@
   <button (click)="deleteMe()" *ngIf="canLeave" type="button" name="button">Leave this mess. Noodle out.</button>
 </div>
 
-<button type="button" name="button" *ngIf="canEdit" (click)="fss.deleteProject(projectToDisplay.id)">Delete</button>
+<button type="button" name="button" *ngIf="canEdit" (click)="fss.deleteProject(projectToDisplay)">Delete</button>
 
 <div class="comments">
     <h3>comments</h3>

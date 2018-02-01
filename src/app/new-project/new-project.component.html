@@ -8,17 +8,35 @@
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Add Project</h5>
+        <h5 class="modal-title" id="exampleModalLongTitle">Add Project <input type="text" [(ngModel)]="title" placeholder="Title"></h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        <input type="text" [(ngModel)]="title" placeholder="title"> <br>
-        <input type="text" [(ngModel)]="course" placeholder="course"><br>
-        <input type="text" [(ngModel)]="description" placeholder="description"><br>
-        <input type="text" [(ngModel)]="inspiration" placeholder="inpsiration"><br>
-        <input type="text" [(ngModel)]="limitMembers" type="number" placeholder="contributor limit"><br>
+          <div class="form-group">
+              <label for="add-course-select">Select your current course</label><br>
+              <select id="add-course-select"[(ngModel)]="course">
+                  <option *ngFor="let class of classes.classList">{{class}}</option>
+              </select>
+          </div>
+          <div class="form-group">
+              <label for="add-description">Give users a detailed course description</label><br>
+              <textarea id="add-description" [(ngModel)]="description" rows="8"></textarea>
+          </div>
+          <div class="form-group">
+              <label for="add-inspiration">Provide a link for inspiration</label><br>
+              <input id="add-inspiration" type="text" [(ngModel)]="inspiration" placeholder="inpsiration">
+          </div>
+          <div class="form-group">
+              <label for="">How many members can be in this group?</label><br>
+              <label for="choose-three">3-></label>
+              <input id="choose-three" type="radio" name="limit" [(ngModel)]="limitMembers" value="3"><br>
+              <label for="choose-four">4-></label>
+              <input id="choose-four" type="radio" name="limit" [(ngModel)]="limitMembers" value="4"><br>
+              <label for="choose-five">5-></label>
+              <input id="choose-five" type="radio" name="limit" [(ngModel)]="limitMembers" value="5">
+          </div>
 
 
 

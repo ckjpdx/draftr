@@ -15,7 +15,9 @@
       </div>
       <div class="modal-body">
           Title: <input type="text" [(ngModel)]="selectedProject.data.title">
-          Course: <input type="text" [(ngModel)]="selectedProject.data.course">
+          Course: <select [(ngModel)]="selectedProject.data.course">
+                    <option *ngFor="let class of classes.classList">{{class}}</option>
+                </select>
           Description: <textarea type="text" [(ngModel)]="selectedProject.data.description"></textarea>
           inspiration: <textarea type="text" [(ngModel)]="selectedProject.data.inspiration"></textarea>
       </div>

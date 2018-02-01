@@ -3,6 +3,7 @@ import { Project } from '../core/project.model';
 import { FirestoreService } from '../core/firestore.service';
 import { AuthService } from '../core/auth.service';
 import * as moment from 'moment';
+import { ClassesService } from '../core/classes.service';
 
 @Component({
   selector: 'app-new-project',
@@ -16,10 +17,10 @@ export class NewProjectComponent implements OnInit {
   course: string;
   description: string;
   inspiration: string;
-  limitMembers: number;
+  limitMembers: string;
 
 
-  constructor(private fss: FirestoreService, private auth: AuthService) { }
+  constructor(private fss: FirestoreService, private auth: AuthService, public classes: ClassesService,) { }
 //submitForm does not match the project model;
   submitForm(title: string, author: string, course: string, description: string){
     // let newProject; need to use fire store to do this;
@@ -44,7 +45,7 @@ export class NewProjectComponent implements OnInit {
       timeStampFormatted: timestampformatted,
       inspiration: this.inspiration,
       contributors: [],
-      limitMembers: this.limitMembers ? this.limitMembers: 3
+      limitMembers: this.limitMembers ? parseInt(this.limitMembers) : 3
 
     })
   }
