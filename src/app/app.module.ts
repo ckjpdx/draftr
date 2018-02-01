@@ -21,6 +21,7 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { EditProjectComponent } from './edit-project/edit-project.component';
 import { CoursesPipe } from './core/courses.pipe';
 import { StagePipe } from './core/stage.pipe';
+import { AvailablityPipe } from './core/availablity.pipe';
 
 
 var firebaseConfig = {
@@ -41,7 +42,8 @@ var firebaseConfig = {
     NewProjectComponent,
     EditProjectComponent,
     CoursesPipe,
-    StagePipe
+    StagePipe,
+    AvailablityPipe
   ],
   imports: [
     BrowserModule,
