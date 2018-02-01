@@ -3,6 +3,7 @@ import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument 
 import { Project, ProjectId } from '../core/project.model';
 import { Comment } from '../core/comment.model';
 import { Observable } from 'rxjs/Observable';
+import { Router } from "@angular/router";
 import { AuthService } from './auth.service';
 import * as firebase from 'firebase/app';
 import 'rxjs/operators/map';
@@ -22,9 +23,9 @@ export class FirestoreService {
 
   commentsCollection: AngularFirestoreCollection < Comment >
 
-  constructor(private afs: AngularFirestore, private auth: AuthService) {
+  constructor(private afs: AngularFirestore, private auth: AuthService, private router: Router) {
     this.projectsCollection = this.afs.collection('projects');
-    // , ref => ref.orderBy('timeStamp') 
+    // , ref => ref.orderBy('timeStamp')
     this.projects = this.projectsCollection.snapshotChanges()
       .map(actions => {
         return actions.map(a =>{
@@ -70,7 +71,8 @@ export class FirestoreService {
 
   deleteProject(id) {
     console.log(id)
-    this.afs.doc('project/' + id).delete();
+    this.afs.doc('projects/' + id).delete();
+    this.router.navigate(['/']);
   }
 
   updateProject(id, newProj){

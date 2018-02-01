@@ -1,5 +1,5 @@
 <!-- Displays Individual Clicked Project-->
-<div class="single-project-display">
+<div class="single-project-display" *ngIf="projectToDisplay">
   <h3>Title: {{projectToDisplay.data.title}}</h3>
   <h3>Author: {{ projectToDisplay.data.authorName}}</h3>
   <h3>Course: {{ projectToDisplay.data.course}}</h3>
@@ -17,6 +17,8 @@
 <div class="contributors-delete">
   <button (click)="deleteMe()" *ngIf="canLeave" type="button" name="button">Leave this mess. Noodle out.</button>
 </div>
+
+<button type="button" name="button" *ngIf="canEdit" (click)="fss.deleteProject(projectToDisplay.id)">Delete</button>
 
 <div class="comments">
     <h3>comments</h3>
