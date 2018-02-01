@@ -81,6 +81,7 @@ export class ProjectDetailComponent implements OnInit {
      newArray.push(this.currentUser.displayName);
      this.fss.updateContributors(this.id, newArray);
      this.auth.updateCurrentUserProject(this.currentUser, this.projectToDisplay);
+     this.fss.changeStage(this.id, 'active');
    }
  }
 
@@ -95,6 +96,11 @@ export class ProjectDetailComponent implements OnInit {
          this.auth.updateCurrentUserProject(this.currentUser, '');
          this.canLeave = false;
        }
+     }
+     console.log(ContributorArray)
+     if (!ContributorArray.length) {
+         console.log("this")
+         this.fss.changeStage(this.id, 'idea');
      }
    }
  }

@@ -82,6 +82,14 @@ export class FirestoreService {
       console.log('updated');
     })
   }
+  changeStage(id, newState){
+      this.projectsCollection.doc(id).update({
+          stage:newState
+      })
+      .then(() => {
+        console.log('updated');
+      })
+  }
   //updateContributors(cheese, whiz)
   updateContributors(id, newArray) {
     this.projectsCollection.doc(id).update({
