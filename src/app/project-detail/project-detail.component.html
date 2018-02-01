@@ -1,7 +1,13 @@
 <!-- Displays Individual Clicked Project-->
+<div class="top-bar">
+    <div class="page-title">
+        <h1>{{projectToDisplay.data.title}}</h1>
+    </div>
+    <div class="bar-content">
+        <span>Brainchild of: {{ projectToDisplay.data.authorName}} straight outta {{ projectToDisplay.data.course }}</span>
+    </div>
+</div>
 <div class="single-project-display" *ngIf="projectToDisplay">
-    <h3>Title: {{projectToDisplay.data.title}}</h3>
-    <h3>Author: {{ projectToDisplay.data.authorName}}</h3>
     <h3>Course: {{ projectToDisplay.data.course}}</h3>
 
     <h3>Contributors</h3>
