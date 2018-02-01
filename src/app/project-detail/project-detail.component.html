@@ -10,6 +10,10 @@
         <button (click)="deleteMe()" *ngIf="canLeave" type="button" name="button">Leave this mess. Noodle out.</button>
         <button type="button" name="button" *ngIf="canEdit && projectToDisplay.data.stage !== 'complete'" (click)="fss.deleteProject(projectToDisplay)">Delete</button>
         <button (click)="completeMe()" *ngIf="canEdit && projectToDisplay.data.stage === 'active'" type="button" name="button">Mark as complete</button>
+        <div *ngIf="projectToDisplay.data.likes">
+          <p>Likes: {{ projectToDisplay.data.likes.length }}</p>
+          <button (click)="likeThisProject()">Like</button>
+        </div>
     </div>
 </div>
 <div class="container">
