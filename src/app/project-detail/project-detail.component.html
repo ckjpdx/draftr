@@ -1,5 +1,6 @@
 <!-- Displays Individual Clicked Project-->
 <div class="top-bar">
+    
     <div class="page-title">
         <h1>{{projectToDisplay.data.title}}</h1>
     </div>
@@ -20,7 +21,7 @@
     <div class="single-project-display" *ngIf="projectToDisplay">
 
         <h3 class="text-center">Contributors to this project</h3>
-        <div class="meta-box">
+        <div class="meta-box contributors">
             <p *ngIf="!projectToDisplay.data.contributors">Nobody is here yet! if you are not already part of a project and you like this, Join the project by clicking the join button.<br> The project will then become active</p>
             <div class="" *ngFor="let member of projectToDisplay.data.contributors">
                 <div class="member-meta text center">

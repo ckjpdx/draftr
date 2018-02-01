@@ -14,6 +14,19 @@ app-login {
     height: 100vh;
     display: flex;
 }
+app-root > img {
+    position: absolute;
+    z-index: -1;
+    opacity: 0.1;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    justify-content: center;
+    align-items: center;
+    display: block;
+    margin: auto;
+}
 
 button.btn {
     border: 1px solid #2d2d2d;
