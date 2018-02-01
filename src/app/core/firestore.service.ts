@@ -113,4 +113,9 @@ export class FirestoreService {
   addComment(projectId, comment){
       this.projectsCollection.doc(projectId).collection('comments').add(comment);
   }
+  updateLikes(projectId, likesArray){
+    this.projectsCollection.doc(projectId).update({
+      likes: likesArray
+    })
+  }
 }

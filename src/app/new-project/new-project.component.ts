@@ -45,7 +45,8 @@ export class NewProjectComponent implements OnInit {
       timeStampFormatted: timestampformatted,
       inspiration: this.inspiration,
       contributors: [],
-      limitMembers: this.limitMembers ? parseInt(this.limitMembers) : 3
+      limitMembers: this.limitMembers ? parseInt(this.limitMembers) : 3,
+      likes: []
     })
   }
 }

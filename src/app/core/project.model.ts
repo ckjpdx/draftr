@@ -9,7 +9,8 @@ export interface Project {
   contributors: string[],
   limitMembers: number,
   timeStamp: number,
-  timeStampFormatted: string
+  timeStampFormatted: string,
+  likes: any[]
 }
 
 export interface ProjectId extends Project {
