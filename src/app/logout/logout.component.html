@@ -1,0 +1,24 @@
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#log-out">
+  Log Out
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="log-out" tabindex="-1" role="dialog" aria-labelledby="logout-title" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content bg-danger">
+      <div class="modal-header bg-dark">
+        <h5 class="modal-title" id="logout-title"><i class="fa fa-exclamation-circle"></i> WHOH HEY!</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          Are you sure you want to log out? Logging out may cause brain aneurysms. please consult your doctor prior to logging out.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">WTF NO!</button>
+        <button type="button" class="btn btn-primary" (click)="auth.signOut()" data-dismiss="modal">Yes Im Sure</button>
+      </div>
+    </div>
+  </div>
+</div>
