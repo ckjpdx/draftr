@@ -13,12 +13,11 @@
       </li>
     </ul>
   </div>
-  <div class="float-right">
+  <div class="float-right" *ngIf="auth.authenticated">
     <app-new-project></app-new-project>
     <app-logout></app-logout>
   </div>
 </nav>
 <div class="page-wrap">
-
   <router-outlet></router-outlet>
 </div>

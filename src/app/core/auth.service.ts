@@ -12,8 +12,13 @@ import 'rxjs/add/operator/switchMap'; // loops thru observable ?
 export class AuthService {
   user: Observable<User>;
   twinkie:boolean;
+  authState: any = null;
 
   constructor(private afAuth: AngularFireAuth, private afs: AngularFirestore, private router: Router) {
+    this.afAuth.authState.subscribe((auth) => {
+        this.authState = auth;
+    });
+
     this.user = afAuth.authState.switchMap(user => { // authState checks for existance of user & if true then user is passed as param
       if (user) {
       return this.afs.doc<User>(`users/${user.uid}`).valueChanges();
@@ -26,7 +31,9 @@ export class AuthService {
   // creamyCenter(cream){
   //   this.twinkie.inject(cream);
   // }
-
+  get authenticated(): boolean {
+  return this.authState !== null;
+}
   normalLogin(email, pw){
 	  console.log(email)
 	  console.log(pw)
